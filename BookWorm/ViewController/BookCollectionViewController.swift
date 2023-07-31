@@ -14,6 +14,7 @@ final class BookCollectionViewController: UICollectionViewController {
     private var bookList: [BookList] = []
     private let networkManager = NetworkManager.shared
     private var cellSize: CGFloat = 0
+    private var pageCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,13 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     private func fetchBookList() async {
-        let list = await networkManager.fetchListData()
+        let list = await networkManager.fetchListData(page: pageCount)
+        
         switch list {
         case .success(let result):
             guard let items = result.item else {return}
-            bookList = items
+            bookList.append(contentsOf: items)
+            pageCount += 1
         case .failure(let error):
             bookList = []
             self.showCancelAlert(
@@ -69,6 +72,12 @@ final class BookCollectionViewController: UICollectionViewController {
         cell.size = cellSize
         return cell
     }
-
+    
+    /// 스크롤 끝에 닿으면 API  요청
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.collectionView.contentOffset.y > collectionView.contentSize.height - collectionView.bounds.size.height {
+            Task{ await fetchBookList() }
+        }
+    }
 }
 
