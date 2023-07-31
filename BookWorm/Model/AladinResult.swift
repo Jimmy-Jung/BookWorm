@@ -23,6 +23,7 @@ struct BookList: Codable {
     let author: String?
     let description: String?
     let priceSales: Int?
+    let priceStandard: Int?
     let cover: String?
     let categoryName: String?
     let publisher: String?

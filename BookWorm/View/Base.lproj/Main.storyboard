@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Upt-0f-Xdt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PQb-EK-r8I">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Book Collection View Controller-->
+        <!--Best Seller-->
         <scene sceneID="7DJ-0E-CeV">
             <objects>
                 <collectionViewController id="Upt-0f-Xdt" customClass="BookCollectionViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,16 +30,172 @@
                             <outlet property="delegate" destination="Upt-0f-Xdt" id="h1v-I5-aGT"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ffO-RO-cDV"/>
+                    <navigationItem key="navigationItem" title="Best Seller" id="ffO-RO-cDV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="3Or-Zr-pI9"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzi-L5-HC7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1906.1068702290077" y="-19.014084507042256"/>
+        </scene>
+        <!--Detail Image View Controller-->
+        <scene sceneID="SZQ-Zd-XMY">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="shr-Oa-FKb" customClass="DetailImageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cPj-wP-MBl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-ZP-yej">
+                                <rect key="frame" x="20" y="79.000000000000014" width="129.66666666666666" height="182.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f0j-ZP-yej" secondAttribute="height" multiplier="150:211" id="DxT-rn-aBC"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5nI-Gk-0jm">
+                                <rect key="frame" x="165.66666666666663" y="79" width="207.33333333333337" height="122.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="국내도서&gt;만화&gt;순정만화&gt;레이디스 코믹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-Vs-qni">
+                                        <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="13.333333333333334"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최애의 아이 11&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bw-iC-ByK">
+                                        <rect key="frame" x="0.0" y="23.333333333333329" width="107.33333333333333" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" name="AccentColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아카사카 아카 (지은이), 요코야리 멘고 (그림)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCl-VU-06a">
+                                        <rect key="frame" x="0.0" y="53.666666666666657" width="198" height="13.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGH-MV-ACQ">
+                                        <rect key="frame" x="0.0" y="77" width="129.33333333333334" height="16"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mgv-VX-Rh9">
+                                                <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="15.666666666666664"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="xtW-Mx-1KV"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Ge-65-VyI">
+                                                <rect key="frame" x="22" y="-0.33333333333333215" width="22" height="15.666666666666664"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rx3-Vb-IXq">
+                                                <rect key="frame" x="44" y="-0.33333333333333215" width="22" height="15.666666666666664"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="c29-y0-zFP">
+                                                <rect key="frame" x="66" y="-0.33333333333333215" width="22" height="15.666666666666664"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ioB-CD-Qfu">
+                                                <rect key="frame" x="88" y="-0.33333333333333215" width="22" height="15.666666666666664"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(9)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-tP-3iL">
+                                                <rect key="frame" x="110.00000000000003" y="0.0" width="19.333333333333343" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-Jh-qmj">
+                                        <rect key="frame" x="0.0" y="103" width="139.33333333333334" height="19.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6,000원 →" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dch-fF-Eas">
+                                                <rect key="frame" x="0.0" y="0.0" width="70.666666666666671" height="19.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,400원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9N-Ki-0PB">
+                                                <rect key="frame" x="78.666666666666686" y="0.0" width="60.666666666666657" height="19.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" systemColor="systemPinkColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="ZXf-da-Vig">
+                                <rect key="frame" x="20" y="281.33333333333331" width="353" height="165.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpi-5z-Khl">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adH-Ei-UlS">
+                                        <rect key="frame" x="0.0" y="56.999999999999993" width="353" height="108.33333333333331"/>
+                                        <string key="text">‘함께 성장해나가는 우리 세대의 소설가’를 갖는 드문 경험을 선사하며 동료 작가와 평론가, 독자 모두에게 특별한 이름으로 자리매김한 최은영의 세번째 소설집. 이번 소설집은 이전 작품들에 담긴 문제의식을 한층 더 깊고 날카로운 시선으로 이어나간다.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0cP-jC-mey"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5nI-Gk-0jm" firstAttribute="leading" secondItem="f0j-ZP-yej" secondAttribute="trailing" constant="16" id="3Xc-47-qRw"/>
+                            <constraint firstAttribute="trailing" secondItem="ZXf-da-Vig" secondAttribute="trailing" constant="20" id="6P0-7w-sby"/>
+                            <constraint firstItem="5nI-Gk-0jm" firstAttribute="top" secondItem="0cP-jC-mey" secondAttribute="top" constant="20" id="8aU-VH-jFF"/>
+                            <constraint firstItem="0cP-jC-mey" firstAttribute="trailing" secondItem="5nI-Gk-0jm" secondAttribute="trailing" constant="20" id="EhR-3s-28C"/>
+                            <constraint firstItem="f0j-ZP-yej" firstAttribute="top" secondItem="0cP-jC-mey" secondAttribute="top" constant="20" id="FPV-ZH-4D8"/>
+                            <constraint firstItem="f0j-ZP-yej" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="Zas-24-ajq"/>
+                            <constraint firstItem="f0j-ZP-yej" firstAttribute="width" secondItem="cPj-wP-MBl" secondAttribute="width" multiplier="0.33" id="jkA-k0-r4j"/>
+                            <constraint firstItem="ZXf-da-Vig" firstAttribute="top" secondItem="f0j-ZP-yej" secondAttribute="bottom" constant="20" id="jw3-C5-KSq"/>
+                            <constraint firstItem="ZXf-da-Vig" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="lsR-BI-5pV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Aq-Eu-SkQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2823.6641221374043" y="-19.014084507042256"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fXC-bW-1A5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PQb-EK-r8I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Xp0-Ey-zmg">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="compactAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
+                        <navigationBarAppearance key="compactScrollEdgeAppearance"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Upt-0f-Xdt" kind="relationship" relationship="rootViewController" id="0Fu-Rx-UtF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJ7-Hq-wj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979.38931297709917" y="-19.014084507042256"/>
         </scene>
     </scenes>
     <resources>
+        <image name="BookCover" width="50" height="70.333335876464844"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

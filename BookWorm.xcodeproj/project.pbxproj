@@ -23,6 +23,7 @@
 		551774962A7805BC0089D911 /* AladinApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774952A7805BC0089D911 /* AladinApi.swift */; };
 		551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774972A7808D70089D911 /* UIViewController+Extension.swift */; };
 		5517749B2A781FE30089D911 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517749A2A781FE30089D911 /* UIColor+Extension.swift */; };
+		5517749D2A7829550089D911 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517749C2A7829550089D911 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		551774952A7805BC0089D911 /* AladinApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinApi.swift; sourceTree = "<group>"; };
 		551774972A7808D70089D911 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5517749A2A781FE30089D911 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		5517749C2A7829550089D911 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5517745F2A77C08D0089D911 /* BookCollectionViewController.swift */,
+				5517749C2A7829550089D911 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5517749D2A7829550089D911 /* DetailViewController.swift in Sources */,
 				551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */,
 				551774782A77C2690089D911 /* Constants.swift in Sources */,
 				551774762A77C1560089D911 /* NetworkManager.swift in Sources */,

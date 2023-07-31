@@ -18,6 +18,7 @@ final class BookCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Best Seller"
         setupCollectionView()
         configCollectionView()
         Task { await fetchBookList() }
