@@ -38,30 +38,30 @@
             </objects>
             <point key="canvasLocation" x="1906.1068702290077" y="-19.014084507042256"/>
         </scene>
-        <!--Detail Image View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="SZQ-Zd-XMY">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="shr-Oa-FKb" customClass="DetailImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="shr-Oa-FKb" customClass="DetailViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cPj-wP-MBl">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-ZP-yej">
-                                <rect key="frame" x="20" y="79.000000000000014" width="129.66666666666666" height="182.33333333333337"/>
+                                <rect key="frame" x="20" y="79" width="50" height="70.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f0j-ZP-yej" secondAttribute="height" multiplier="150:211" id="DxT-rn-aBC"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5nI-Gk-0jm">
-                                <rect key="frame" x="165.66666666666663" y="79" width="207.33333333333337" height="122.33333333333331"/>
+                                <rect key="frame" x="86" y="79" width="287" height="122.33333333333331"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="국내도서&gt;만화&gt;순정만화&gt;레이디스 코믹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-Vs-qni">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="국내도서&gt;만화&gt;순정만화&gt;레이디스 코믹" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-Vs-qni">
                                         <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="13.333333333333334"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최애의 아이 11&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bw-iC-ByK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="최애의 아이 11&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bw-iC-ByK">
                                         <rect key="frame" x="0.0" y="23.333333333333329" width="107.33333333333333" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" name="AccentColor"/>
@@ -95,7 +95,7 @@
                                                 <rect key="frame" x="88" y="-0.33333333333333215" width="22" height="15.666666666666664"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(9)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-tP-3iL">
-                                                <rect key="frame" x="110.00000000000003" y="0.0" width="19.333333333333343" height="16"/>
+                                                <rect key="frame" x="110" y="0.0" width="19.333333333333343" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,400원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9N-Ki-0PB">
-                                                <rect key="frame" x="78.666666666666686" y="0.0" width="60.666666666666657" height="19.333333333333332"/>
+                                                <rect key="frame" x="78.666666666666657" y="0.0" width="60.666666666666657" height="19.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" systemColor="systemPinkColor"/>
                                                 <nil key="highlightedColor"/>
@@ -121,8 +121,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="ZXf-da-Vig">
-                                <rect key="frame" x="20" y="281.33333333333331" width="353" height="165.33333333333331"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZXf-da-Vig">
+                                <rect key="frame" x="20" y="169.33333333333331" width="353" height="144.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpi-5z-Khl">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="24"/>
@@ -131,7 +131,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adH-Ei-UlS">
-                                        <rect key="frame" x="0.0" y="56.999999999999993" width="353" height="108.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="35.999999999999993" width="353" height="108.33333333333331"/>
                                         <string key="text">‘함께 성장해나가는 우리 세대의 소설가’를 갖는 드문 경험을 선사하며 동료 작가와 평론가, 독자 모두에게 특별한 이름으로 자리매김한 최은영의 세번째 소설집. 이번 소설집은 이전 작품들에 담긴 문제의식을 한층 더 깊고 날카로운 시선으로 이어나간다.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
@@ -149,11 +149,26 @@
                             <constraint firstItem="0cP-jC-mey" firstAttribute="trailing" secondItem="5nI-Gk-0jm" secondAttribute="trailing" constant="20" id="EhR-3s-28C"/>
                             <constraint firstItem="f0j-ZP-yej" firstAttribute="top" secondItem="0cP-jC-mey" secondAttribute="top" constant="20" id="FPV-ZH-4D8"/>
                             <constraint firstItem="f0j-ZP-yej" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="Zas-24-ajq"/>
-                            <constraint firstItem="f0j-ZP-yej" firstAttribute="width" secondItem="cPj-wP-MBl" secondAttribute="width" multiplier="0.33" id="jkA-k0-r4j"/>
                             <constraint firstItem="ZXf-da-Vig" firstAttribute="top" secondItem="f0j-ZP-yej" secondAttribute="bottom" constant="20" id="jw3-C5-KSq"/>
                             <constraint firstItem="ZXf-da-Vig" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="lsR-BI-5pV"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="yq5-Gs-786"/>
+                    <connections>
+                        <outlet property="authorLabel" destination="NCl-VU-06a" id="TSb-4F-Wlh"/>
+                        <outlet property="categoryNameLabel" destination="ksi-Vs-qni" id="VCI-Eq-jeU"/>
+                        <outlet property="coverImageView" destination="f0j-ZP-yej" id="gSR-ei-GYI"/>
+                        <outlet property="customerReviewRankLabel" destination="ZDv-tP-3iL" id="GV9-fB-Gke"/>
+                        <outlet property="descriptionLabel" destination="adH-Ei-UlS" id="V2H-Wm-Uyd"/>
+                        <outlet property="priceSales" destination="K9N-Ki-0PB" id="HRL-Zm-jqO"/>
+                        <outlet property="priceStandard" destination="dch-fF-Eas" id="7jb-ti-zhg"/>
+                        <outlet property="titleLabel" destination="7Bw-iC-ByK" id="1O4-85-7Py"/>
+                        <outletCollection property="starCollection" destination="Mgv-VX-Rh9" collectionClass="NSMutableArray" id="dit-9A-iv0"/>
+                        <outletCollection property="starCollection" destination="0Ge-65-VyI" collectionClass="NSMutableArray" id="EDF-qc-7zR"/>
+                        <outletCollection property="starCollection" destination="rx3-Vb-IXq" collectionClass="NSMutableArray" id="5Bf-GK-dgg"/>
+                        <outletCollection property="starCollection" destination="c29-y0-zFP" collectionClass="NSMutableArray" id="jvJ-hc-aos"/>
+                        <outletCollection property="starCollection" destination="ioB-CD-Qfu" collectionClass="NSMutableArray" id="VlE-sl-04p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Aq-Eu-SkQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

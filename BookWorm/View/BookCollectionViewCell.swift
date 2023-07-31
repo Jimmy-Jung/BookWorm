@@ -26,7 +26,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func configureCell(from book: BookList) {
+    public func configureCell(from book: BookInfo) {
         setupLayout()
         let title = book.title ?? "책 이름"
         let rank = book.customerReviewRank ?? 0

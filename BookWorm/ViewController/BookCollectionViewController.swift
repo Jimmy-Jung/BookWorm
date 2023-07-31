@@ -11,10 +11,10 @@ final class BookCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "BookCollectionViewController"
     private let cellIdentifier = BookCollectionViewCell.identifier
     
-    private var bookList: [BookList] = []
+    private var bookList: [BookInfo] = []
     private let networkManager = NetworkManager.shared
     private var cellSize: CGFloat = 0
-    private var pageCount: Int = 0
+//    private var pageCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,13 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     private func fetchBookList() async {
-        let list = await networkManager.fetchListData(page: pageCount)
+        let list = await networkManager.fetchListData()
         
         switch list {
         case .success(let result):
             guard let items = result.item else {return}
             bookList.append(contentsOf: items)
-            pageCount += 1
+//            pageCount += 1
         case .failure(let error):
             bookList = []
             self.showCancelAlert(
@@ -74,11 +74,18 @@ final class BookCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    /// 스크롤 끝에 닿으면 API  요청
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if self.collectionView.contentOffset.y > collectionView.contentSize.height - collectionView.bounds.size.height {
-            Task{ await fetchBookList() }
-        }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: DetailViewController.StoryBoardIdentifier) as! DetailViewController
+        vc.bookInfo = bookList[indexPath.item]
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
+    /// 스크롤 끝에 닿으면 API  요청
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if self.collectionView.contentOffset.y > collectionView.contentSize.height - collectionView.bounds.size.height {
+//            Task{ await fetchBookList() }
+//        }
+//    }
 }
 

@@ -13,11 +13,11 @@ struct AladinResult: Codable {
     /// 현재 페이지
     let startIndex: Int?
     let itemsPerPage: Int?
-    let item: [BookList]?
+    let item: [BookInfo]?
 }
 
 // MARK: - Item
-struct BookList: Codable {
+struct BookInfo: Codable {
     let title: String?
     let link: String?
     let author: String?
