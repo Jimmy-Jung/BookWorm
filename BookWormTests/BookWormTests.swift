@@ -43,13 +43,14 @@ final class BookWormTests: XCTestCase {
         // given
         
         // when
-        let data = await sut.fetchListData(kindOfList: .Bestseller)
+        let data = await sut.fetchListData()
         switch data {
-        case .success(let result):
-            guard let result = result.item?.first?.title else {
+        case .success(let results):
+            guard let result = results.item?.first?.title else {
                 throw NetworkError.networkingError
             }
             let value = "최애의 아이 11"
+            
             XCTAssertEqual(result, value)
         case .failure(_):
             break

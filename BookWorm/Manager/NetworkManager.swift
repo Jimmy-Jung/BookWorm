@@ -45,7 +45,7 @@ final class NetworkManager {
         coverSize: AladinApi.CoverSize = .midBig
     ) async -> NetworkResult {
         var urlString = "\(AS.searchRequestURL)"
-        urlString += "Query=\(searchTerm)"
+        urlString += "&Query=\(searchTerm)"
         urlString += "&\(AS.Keyword)"
         urlString += "&\(AladinApi.resultPerPage(max))"
         urlString += "&\(AladinApi.Page(page))"
@@ -57,14 +57,13 @@ final class NetworkManager {
     }
     
     public func fetchListData(
-        kindOfList kind: AL.KindOfList,
+        kindOfList kind: AL.KindOfList = .Bestseller,
         resultPerPage max: Int = 50,
         page: Int = 1,
         coverSize: AladinApi.CoverSize = .midBig
     ) async -> NetworkResult {
-        var urlString = "\(AS.searchRequestURL)"
-        urlString += kind.rawValue
-        urlString += "&\(AS.Keyword)"
+        var urlString = "\(AL.listRequestURL)"
+        urlString += "&\(kind.rawValue)"
         urlString += "&\(AladinApi.resultPerPage(max))"
         urlString += "&\(AladinApi.Page(page))"
         urlString += "&\(AladinApi.version)"

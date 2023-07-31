@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5517745C2A77C08D0089D911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517745B2A77C08D0089D911 /* AppDelegate.swift */; };
 		5517745E2A77C08D0089D911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517745D2A77C08D0089D911 /* SceneDelegate.swift */; };
-		551774602A77C08D0089D911 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517745F2A77C08D0089D911 /* ViewController.swift */; };
+		551774602A77C08D0089D911 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517745F2A77C08D0089D911 /* BookCollectionViewController.swift */; };
 		551774632A77C08D0089D911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551774612A77C08D0089D911 /* Main.storyboard */; };
 		551774652A77C08F0089D911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551774642A77C08F0089D911 /* Assets.xcassets */; };
 		551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551774662A77C08F0089D911 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,11 @@
 		551774782A77C2690089D911 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774772A77C2690089D911 /* Constants.swift */; };
 		5517747A2A77D0210089D911 /* AladinResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774792A77D0210089D911 /* AladinResult.swift */; };
 		551774862A77EA3D0089D911 /* BookWormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774852A77EA3D0089D911 /* BookWormTests.swift */; };
+		551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517748E2A77F7650089D911 /* BookCollectionViewCell.swift */; };
+		551774912A77F7650089D911 /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5517748F2A77F7650089D911 /* BookCollectionViewCell.xib */; };
+		551774942A77FFF90089D911 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 551774932A77FFF90089D911 /* Kingfisher */; };
+		551774962A7805BC0089D911 /* AladinApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774952A7805BC0089D911 /* AladinApi.swift */; };
+		551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774972A7808D70089D911 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +38,7 @@
 		551774582A77C08D0089D911 /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5517745B2A77C08D0089D911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5517745D2A77C08D0089D911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5517745F2A77C08D0089D911 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5517745F2A77C08D0089D911 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
 		551774622A77C08D0089D911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		551774642A77C08F0089D911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551774672A77C08F0089D911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +48,10 @@
 		551774792A77D0210089D911 /* AladinResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinResult.swift; sourceTree = "<group>"; };
 		551774832A77EA3D0089D911 /* BookWormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		551774852A77EA3D0089D911 /* BookWormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormTests.swift; sourceTree = "<group>"; };
+		5517748E2A77F7650089D911 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		5517748F2A77F7650089D911 /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
+		551774952A7805BC0089D911 /* AladinApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinApi.swift; sourceTree = "<group>"; };
+		551774972A7808D70089D911 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551774942A77FFF90089D911 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +96,7 @@
 			children = (
 				551774642A77C08F0089D911 /* Assets.xcassets */,
 				551774692A77C08F0089D911 /* Info.plist */,
+				551774992A7808DA0089D911 /* Extension */,
 				551774702A77C0B40089D911 /* App */,
 				551774742A77C0CC0089D911 /* Manager */,
 				551774732A77C0C70089D911 /* Helper */,
@@ -118,6 +129,8 @@
 			children = (
 				551774612A77C08D0089D911 /* Main.storyboard */,
 				551774662A77C08F0089D911 /* LaunchScreen.storyboard */,
+				5517748E2A77F7650089D911 /* BookCollectionViewCell.swift */,
+				5517748F2A77F7650089D911 /* BookCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,7 +138,7 @@
 		551774722A77C0C10089D911 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5517745F2A77C08D0089D911 /* ViewController.swift */,
+				5517745F2A77C08D0089D911 /* BookCollectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -134,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				551774772A77C2690089D911 /* Constants.swift */,
+				551774952A7805BC0089D911 /* AladinApi.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -154,6 +168,14 @@
 			path = BookWormTests;
 			sourceTree = "<group>";
 		};
+		551774992A7808DA0089D911 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				551774972A7808D70089D911 /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,6 +192,9 @@
 			dependencies = (
 			);
 			name = BookWorm;
+			packageProductDependencies = (
+				551774932A77FFF90089D911 /* Kingfisher */,
+			);
 			productName = BookWorm;
 			productReference = 551774582A77C08D0089D911 /* BookWorm.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +245,9 @@
 				Base,
 			);
 			mainGroup = 5517744F2A77C08D0089D911;
+			packageReferences = (
+				551774922A77FFF90089D911 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 551774592A77C08D0089D911 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -236,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */,
+				551774912A77F7650089D911 /* BookCollectionViewCell.xib in Resources */,
 				551774652A77C08F0089D911 /* Assets.xcassets in Resources */,
 				551774632A77C08D0089D911 /* Main.storyboard in Resources */,
 			);
@@ -255,10 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */,
 				551774782A77C2690089D911 /* Constants.swift in Sources */,
 				551774762A77C1560089D911 /* NetworkManager.swift in Sources */,
-				551774602A77C08D0089D911 /* ViewController.swift in Sources */,
+				551774602A77C08D0089D911 /* BookCollectionViewController.swift in Sources */,
 				5517747A2A77D0210089D911 /* AladinResult.swift in Sources */,
+				551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */,
+				551774962A7805BC0089D911 /* AladinApi.swift in Sources */,
 				5517745C2A77C08D0089D911 /* AppDelegate.swift in Sources */,
 				5517745E2A77C08D0089D911 /* SceneDelegate.swift in Sources */,
 			);
@@ -547,6 +579,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		551774922A77FFF90089D911 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		551774932A77FFF90089D911 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 551774922A77FFF90089D911 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 551774502A77C08D0089D911 /* Project object */;
 }
