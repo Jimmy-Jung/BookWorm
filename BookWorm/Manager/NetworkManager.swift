@@ -41,7 +41,8 @@ final class NetworkManager {
     public func fetchSearchData(
         searchTerm: String,
         resultPerPage max: Int = 50,
-        page: Int = 1
+        page: Int = 1,
+        coverSize: AladinApi.CoverSize = .midBig
     ) async -> NetworkResult {
         var urlString = "\(AS.searchRequestURL)"
         urlString += "Query=\(searchTerm)"
@@ -49,6 +50,7 @@ final class NetworkManager {
         urlString += "&\(AladinApi.resultPerPage(max))"
         urlString += "&\(AladinApi.Page(page))"
         urlString += "&\(AladinApi.version)"
+        urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
         return await performRequest(with: urlString)
@@ -57,7 +59,8 @@ final class NetworkManager {
     public func fetchListData(
         kindOfList kind: AL.KindOfList,
         resultPerPage max: Int = 50,
-        page: Int = 1
+        page: Int = 1,
+        coverSize: AladinApi.CoverSize = .midBig
     ) async -> NetworkResult {
         var urlString = "\(AS.searchRequestURL)"
         urlString += kind.rawValue
@@ -65,6 +68,7 @@ final class NetworkManager {
         urlString += "&\(AladinApi.resultPerPage(max))"
         urlString += "&\(AladinApi.Page(page))"
         urlString += "&\(AladinApi.version)"
+        urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
         return await performRequest(with: urlString)

@@ -46,6 +46,21 @@ public enum AladinApi {
             case BlogBest = "QueryType=BlogBest"
         }
     }
+    /// 썸네일 사이즈
+    enum CoverSize: String {
+        /// 큰 크기 : 너비 200px
+        case big = "Cover=Big"
+        /// 중간 큰 크기 : 너비 150px
+        case midBig  = "Cover=MidBig"
+        /// 중간 크기(기본값) : 너비 85px
+        case mid = "Cover=Mid"
+        /// 작은 크기 : 너비 75px
+        case small = "Cover=Small"
+        /// 매우 작은 크기 : 너비 65px
+        case mini = "Cover=Mini"
+        /// 커버 없음
+        case none = "Cover=None"
+    }
     /// apiKey
     static let apiKey = "ttbjoony30001924001"
     /// 표시할 페이지
