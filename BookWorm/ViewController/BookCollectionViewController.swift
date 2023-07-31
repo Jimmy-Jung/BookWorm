@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class BookCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "BookCollectionViewController"
@@ -14,12 +13,12 @@ final class BookCollectionViewController: UICollectionViewController {
     
     private var bookList: [BookList] = []
     private let networkManager = NetworkManager.shared
+    private var cellSize: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         configCollectionView()
-        print("11")
         Task { await fetchBookList() }
     }
     
@@ -47,13 +46,16 @@ final class BookCollectionViewController: UICollectionViewController {
     
     private func configCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        let inset: CGFloat = 20
-        let spacing: CGFloat = 8
-        let width = UIScreen.main.bounds.width - (spacing + inset*2 )
+        let spacing:CGFloat = 8
+        // 이게 아이폰에서 디바이스 넓이를 가지고올수있는 코드
+        let width = UIScreen.main.bounds.width - (spacing * 3)
+        cellSize = width/2
         layout.itemSize = CGSize(width: width/2, height: width/2)
-        layout.sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        collectionView.collectionViewLayout = layout
+        layout.minimumInteritemSpacing = spacing
         layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = inset
+        layout.scrollDirection = .vertical
         collectionView.collectionViewLayout = layout
     }
     
@@ -63,18 +65,8 @@ final class BookCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! BookCollectionViewCell
-        let title = bookList[indexPath.item].title ?? "책 이름"
-        let rank = bookList[indexPath.item].customerReviewRank ?? 0
-        let imageUrl = bookList[indexPath.item].cover ?? ""
-        let url = URL(string: imageUrl)
-        cell.titleLabel.text = title
-        cell.rankLabel.text = "\(rank)/10"
-        if url != nil {
-            cell.coverImageView.kf.setImage(with: url)
-        } else {
-            cell.coverImageView.image = UIImage(named: ImageString.defaultBookCover)
-        }
-        
+        cell.configureCell(from: bookList[indexPath.item])
+        cell.size = cellSize
         return cell
     }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class BookCollectionViewCell: UICollectionViewCell {
     static let identifier = "BookCollectionViewCell"
@@ -17,12 +18,36 @@ final class BookCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    public var size: CGFloat = 100 {
+        didSet {
+            backView.frame.size = CGSize(width: size, height: size)
+        }
+    }
+    
+    public func configureCell(from book: BookList) {
+        setupLayout()
+        let title = book.title ?? "책 이름"
+        let rank = book.customerReviewRank ?? 0
+        let imageUrl = book.cover ?? ""
+        let url = URL(string: imageUrl)
         
-        backView.layer.cornerRadius = 10
+        titleLabel.text = title
+        rankLabel.text = "\(rank)/10"
+        if url != nil {
+            coverImageView.kf.setImage(with: url)
+        } else {
+            coverImageView.image = UIImage(named: ImageString.defaultBookCover)
+        }
+    }
+    private func setupLayout() {
+        backView.backgroundColor = UIColor.thinRandom()
         backView.clipsToBounds = true
-        
-        coverImageView.layer.cornerRadius = 5
+        backView.layer.cornerRadius = 10
         coverImageView.clipsToBounds = true
+        coverImageView.layer.cornerRadius = 10
+        
     }
 
     
