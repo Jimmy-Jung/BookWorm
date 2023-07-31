@@ -13,6 +13,9 @@
 		551774632A77C08D0089D911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551774612A77C08D0089D911 /* Main.storyboard */; };
 		551774652A77C08F0089D911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551774642A77C08F0089D911 /* Assets.xcassets */; };
 		551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551774662A77C08F0089D911 /* LaunchScreen.storyboard */; };
+		551774762A77C1560089D911 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774752A77C1560089D911 /* NetworkManager.swift */; };
+		551774782A77C2690089D911 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774772A77C2690089D911 /* Constants.swift */; };
+		5517747A2A77D0210089D911 /* AladinResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774792A77D0210089D911 /* AladinResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		551774642A77C08F0089D911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551774672A77C08F0089D911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		551774692A77C08F0089D911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		551774752A77C1560089D911 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		551774772A77C2690089D911 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		551774792A77D0210089D911 /* AladinResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,66 @@
 		5517745A2A77C08D0089D911 /* BookWorm */ = {
 			isa = PBXGroup;
 			children = (
-				5517745B2A77C08D0089D911 /* AppDelegate.swift */,
-				5517745D2A77C08D0089D911 /* SceneDelegate.swift */,
-				5517745F2A77C08D0089D911 /* ViewController.swift */,
-				551774612A77C08D0089D911 /* Main.storyboard */,
 				551774642A77C08F0089D911 /* Assets.xcassets */,
-				551774662A77C08F0089D911 /* LaunchScreen.storyboard */,
 				551774692A77C08F0089D911 /* Info.plist */,
+				551774702A77C0B40089D911 /* App */,
+				551774742A77C0CC0089D911 /* Manager */,
+				551774732A77C0C70089D911 /* Helper */,
+				5517746F2A77C0A90089D911 /* Model */,
+				551774712A77C0B90089D911 /* View */,
+				551774722A77C0C10089D911 /* ViewController */,
 			);
 			path = BookWorm;
+			sourceTree = "<group>";
+		};
+		5517746F2A77C0A90089D911 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				551774792A77D0210089D911 /* AladinResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		551774702A77C0B40089D911 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5517745B2A77C08D0089D911 /* AppDelegate.swift */,
+				5517745D2A77C08D0089D911 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		551774712A77C0B90089D911 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				551774612A77C08D0089D911 /* Main.storyboard */,
+				551774662A77C08F0089D911 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		551774722A77C0C10089D911 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5517745F2A77C08D0089D911 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		551774732A77C0C70089D911 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				551774772A77C2690089D911 /* Constants.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		551774742A77C0CC0089D911 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				551774752A77C1560089D911 /* NetworkManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +195,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551774782A77C2690089D911 /* Constants.swift in Sources */,
+				551774762A77C1560089D911 /* NetworkManager.swift in Sources */,
 				551774602A77C08D0089D911 /* ViewController.swift in Sources */,
+				5517747A2A77D0210089D911 /* AladinResult.swift in Sources */,
 				5517745C2A77C08D0089D911 /* AppDelegate.swift in Sources */,
 				5517745E2A77C08D0089D911 /* SceneDelegate.swift in Sources */,
 			);
