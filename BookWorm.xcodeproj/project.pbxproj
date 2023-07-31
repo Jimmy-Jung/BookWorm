@@ -16,7 +16,18 @@
 		551774762A77C1560089D911 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774752A77C1560089D911 /* NetworkManager.swift */; };
 		551774782A77C2690089D911 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774772A77C2690089D911 /* Constants.swift */; };
 		5517747A2A77D0210089D911 /* AladinResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774792A77D0210089D911 /* AladinResult.swift */; };
+		551774862A77EA3D0089D911 /* BookWormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774852A77EA3D0089D911 /* BookWormTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		551774872A77EA3D0089D911 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 551774502A77C08D0089D911 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 551774572A77C08D0089D911;
+			remoteInfo = BookWorm;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		551774582A77C08D0089D911 /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,10 +41,19 @@
 		551774752A77C1560089D911 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		551774772A77C2690089D911 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		551774792A77D0210089D911 /* AladinResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinResult.swift; sourceTree = "<group>"; };
+		551774832A77EA3D0089D911 /* BookWormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		551774852A77EA3D0089D911 /* BookWormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWormTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		551774552A77C08D0089D911 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551774802A77EA3D0089D911 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				5517745A2A77C08D0089D911 /* BookWorm */,
+				551774842A77EA3D0089D911 /* BookWormTests */,
 				551774592A77C08D0089D911 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				551774582A77C08D0089D911 /* BookWorm.app */,
+				551774832A77EA3D0089D911 /* BookWormTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +146,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		551774842A77EA3D0089D911 /* BookWormTests */ = {
+			isa = PBXGroup;
+			children = (
+				551774852A77EA3D0089D911 /* BookWormTests.swift */,
+			);
+			path = BookWormTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +174,24 @@
 			productReference = 551774582A77C08D0089D911 /* BookWorm.app */;
 			productType = "com.apple.product-type.application";
 		};
+		551774822A77EA3D0089D911 /* BookWormTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 551774892A77EA3D0089D911 /* Build configuration list for PBXNativeTarget "BookWormTests" */;
+			buildPhases = (
+				5517747F2A77EA3D0089D911 /* Sources */,
+				551774802A77EA3D0089D911 /* Frameworks */,
+				551774812A77EA3D0089D911 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				551774882A77EA3D0089D911 /* PBXTargetDependency */,
+			);
+			name = BookWormTests;
+			productName = BookWormTests;
+			productReference = 551774832A77EA3D0089D911 /* BookWormTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -156,6 +204,10 @@
 				TargetAttributes = {
 					551774572A77C08D0089D911 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					551774822A77EA3D0089D911 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 551774572A77C08D0089D911;
 					};
 				};
 			};
@@ -173,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				551774572A77C08D0089D911 /* BookWorm */,
+				551774822A77EA3D0089D911 /* BookWormTests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,6 +238,13 @@
 				551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */,
 				551774652A77C08F0089D911 /* Assets.xcassets in Resources */,
 				551774632A77C08D0089D911 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		551774812A77EA3D0089D911 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +264,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5517747F2A77EA3D0089D911 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551774862A77EA3D0089D911 /* BookWormTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		551774882A77EA3D0089D911 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 551774572A77C08D0089D911 /* BookWorm */;
+			targetProxy = 551774872A77EA3D0089D911 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		551774612A77C08D0089D911 /* Main.storyboard */ = {
@@ -396,6 +472,50 @@
 			};
 			name = Release;
 		};
+		5517748A2A77EA3D0089D911 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jimmy.BookWormTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookWorm.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookWorm";
+			};
+			name = Debug;
+		};
+		5517748B2A77EA3D0089D911 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jimmy.BookWormTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookWorm.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookWorm";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,6 +533,15 @@
 			buildConfigurations = (
 				5517746D2A77C08F0089D911 /* Debug */,
 				5517746E2A77C08F0089D911 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		551774892A77EA3D0089D911 /* Build configuration list for PBXNativeTarget "BookWormTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5517748A2A77EA3D0089D911 /* Debug */,
+				5517748B2A77EA3D0089D911 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
