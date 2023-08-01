@@ -28,6 +28,7 @@
 		551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774A02A7889DD0089D911 /* SearchTableViewCell.swift */; };
 		551774A32A7889DD0089D911 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551774A12A7889DD0089D911 /* SearchTableViewCell.xib */; };
 		551774A52A7894F80089D911 /* BookCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774A42A7894F80089D911 /* BookCollectionReusableView.swift */; };
+		551774A92A78D6070089D911 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 551774A82A78D6070089D911 /* Property List.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		551774A02A7889DD0089D911 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		551774A12A7889DD0089D911 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		551774A42A7894F80089D911 /* BookCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionReusableView.swift; sourceTree = "<group>"; };
+		551774A82A78D6070089D911 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				551774642A77C08F0089D911 /* Assets.xcassets */,
 				551774692A77C08F0089D911 /* Info.plist */,
+				551774A82A78D6070089D911 /* Property List.plist */,
 				551774992A7808DA0089D911 /* Extension */,
 				551774702A77C0B40089D911 /* App */,
 				551774742A77C0CC0089D911 /* Manager */,
@@ -281,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551774A92A78D6070089D911 /* Property List.plist in Resources */,
 				551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */,
 				551774912A77F7650089D911 /* BookCollectionViewCell.xib in Resources */,
 				551774652A77C08F0089D911 /* Assets.xcassets in Resources */,
