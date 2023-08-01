@@ -21,7 +21,20 @@ final class BookCollectionViewController: UICollectionViewController {
         title = "Best Seller"
         setupCollectionView()
         configCollectionView()
+        setupSearchController()
         Task { await fetchBookList() }
+    }
+    
+    private func setupSearchController() {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: SearchTableViewController.StoryBoardIdentifier) as! SearchTableViewController
+        let searchVC = UISearchController(searchResultsController: vc)
+        let searchController = searchVC
+        searchController.searchBar.placeholder = "책 제목 또는 저자를 입력하세요."
+        searchController.hidesNavigationBarDuringPresentation = false
+        self.navigationItem.searchController = searchController
+        self.navigationItem.title = "책 검색"
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func fetchBookList() async {
@@ -81,6 +94,14 @@ final class BookCollectionViewController: UICollectionViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind, withReuseIdentifier: BookCollectionReusableView.identifier,
+            for: indexPath
+        ) as! BookCollectionReusableView
+        return sectionHeader
+    }
+    
     /// 스크롤 끝에 닿으면 API  요청
 //    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        if self.collectionView.contentOffset.y > collectionView.contentSize.height - collectionView.bounds.size.height {
@@ -88,4 +109,12 @@ final class BookCollectionViewController: UICollectionViewController {
 //        }
 //    }
 }
+
+extension BookCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
+}
+
+
 

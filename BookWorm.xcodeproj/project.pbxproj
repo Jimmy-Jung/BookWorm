@@ -24,6 +24,10 @@
 		551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774972A7808D70089D911 /* UIViewController+Extension.swift */; };
 		5517749B2A781FE30089D911 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517749A2A781FE30089D911 /* UIColor+Extension.swift */; };
 		5517749D2A7829550089D911 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517749C2A7829550089D911 /* DetailViewController.swift */; };
+		5517749F2A78896C0089D911 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517749E2A78896C0089D911 /* SearchTableViewController.swift */; };
+		551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774A02A7889DD0089D911 /* SearchTableViewCell.swift */; };
+		551774A32A7889DD0089D911 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551774A12A7889DD0089D911 /* SearchTableViewCell.xib */; };
+		551774A52A7894F80089D911 /* BookCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774A42A7894F80089D911 /* BookCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		551774972A7808D70089D911 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5517749A2A781FE30089D911 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		5517749C2A7829550089D911 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5517749E2A78896C0089D911 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		551774A02A7889DD0089D911 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		551774A12A7889DD0089D911 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		551774A42A7894F80089D911 /* BookCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,9 @@
 				551774662A77C08F0089D911 /* LaunchScreen.storyboard */,
 				5517748E2A77F7650089D911 /* BookCollectionViewCell.swift */,
 				5517748F2A77F7650089D911 /* BookCollectionViewCell.xib */,
+				551774A02A7889DD0089D911 /* SearchTableViewCell.swift */,
+				551774A12A7889DD0089D911 /* SearchTableViewCell.xib */,
+				551774A42A7894F80089D911 /* BookCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +155,7 @@
 			children = (
 				5517745F2A77C08D0089D911 /* BookCollectionViewController.swift */,
 				5517749C2A7829550089D911 /* DetailViewController.swift */,
+				5517749E2A78896C0089D911 /* SearchTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -273,6 +285,7 @@
 				551774912A77F7650089D911 /* BookCollectionViewCell.xib in Resources */,
 				551774652A77C08F0089D911 /* Assets.xcassets in Resources */,
 				551774632A77C08D0089D911 /* Main.storyboard in Resources */,
+				551774A32A7889DD0089D911 /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551774A52A7894F80089D911 /* BookCollectionReusableView.swift in Sources */,
 				5517749D2A7829550089D911 /* DetailViewController.swift in Sources */,
 				551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */,
 				551774782A77C2690089D911 /* Constants.swift in Sources */,
@@ -297,6 +311,8 @@
 				551774602A77C08D0089D911 /* BookCollectionViewController.swift in Sources */,
 				5517747A2A77D0210089D911 /* AladinResult.swift in Sources */,
 				551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */,
+				5517749F2A78896C0089D911 /* SearchTableViewController.swift in Sources */,
+				551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */,
 				551774962A7805BC0089D911 /* AladinApi.swift in Sources */,
 				5517745C2A77C08D0089D911 /* AppDelegate.swift in Sources */,
 				5517745E2A77C08D0089D911 /* SceneDelegate.swift in Sources */,

@@ -14,25 +14,44 @@
         <scene sceneID="7DJ-0E-CeV">
             <objects>
                 <collectionViewController id="Upt-0f-Xdt" customClass="BookCollectionViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8hx-ND-at1">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="8hx-ND-at1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eg5-Zu-cLj">
                             <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells/>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="BookCollectionReusableView" id="cEC-v5-Ce6" customClass="BookCollectionReusableView" customModule="BookWorm" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-Py-WTn">
+                                    <rect key="frame" x="16" y="16" width="361" height="18"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottomMargin" secondItem="Tac-Py-WTn" secondAttribute="bottom" constant="8" id="FHt-MJ-gDC"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="Tac-Py-WTn" secondAttribute="trailing" constant="8" id="aej-4H-tlI"/>
+                                <constraint firstItem="Tac-Py-WTn" firstAttribute="leading" secondItem="cEC-v5-Ce6" secondAttribute="leadingMargin" constant="8" id="eSz-TS-8yC"/>
+                                <constraint firstItem="Tac-Py-WTn" firstAttribute="top" secondItem="cEC-v5-Ce6" secondAttribute="topMargin" constant="8" id="p2D-KG-KOR"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="sectionHeaderViewLabel" destination="Tac-Py-WTn" id="Jk0-qt-iJm"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Upt-0f-Xdt" id="2u5-9t-iMz"/>
                             <outlet property="delegate" destination="Upt-0f-Xdt" id="h1v-I5-aGT"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Best Seller" id="ffO-RO-cDV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="3Or-Zr-pI9"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Best Seller" id="ffO-RO-cDV"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzi-L5-HC7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,13 +66,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-ZP-yej">
-                                <rect key="frame" x="20" y="79" width="50" height="70.333333333333314"/>
+                                <rect key="frame" x="20" y="78.999999999999986" width="100" height="140.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f0j-ZP-yej" secondAttribute="height" multiplier="150:211" id="DxT-rn-aBC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="V1k-Ez-JUo"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5nI-Gk-0jm">
-                                <rect key="frame" x="86" y="79" width="287" height="122.33333333333331"/>
+                                <rect key="frame" x="136" y="79" width="237" height="122.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="국내도서&gt;만화&gt;순정만화&gt;레이디스 코믹" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-Vs-qni">
                                         <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="13.333333333333334"/>
@@ -122,7 +142,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZXf-da-Vig">
-                                <rect key="frame" x="20" y="169.33333333333331" width="353" height="144.33333333333331"/>
+                                <rect key="frame" x="20" y="239.66666666666663" width="353" height="144.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpi-5z-Khl">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="24"/>
@@ -131,7 +151,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adH-Ei-UlS">
-                                        <rect key="frame" x="0.0" y="35.999999999999993" width="353" height="108.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="36.000000000000021" width="353" height="108.33333333333331"/>
                                         <string key="text">‘함께 성장해나가는 우리 세대의 소설가’를 갖는 드문 경험을 선사하며 동료 작가와 평론가, 독자 모두에게 특별한 이름으로 자리매김한 최은영의 세번째 소설집. 이번 소설집은 이전 작품들에 담긴 문제의식을 한층 더 깊고 날카로운 시선으로 이어나간다.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
@@ -173,6 +193,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Aq-Eu-SkQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2823.6641221374043" y="-19.014084507042256"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="wFq-9O-hvM">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="a95-wm-nkW" customClass="SearchTableViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="uDe-J1-7kz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="a95-wm-nkW" id="O7V-UC-OFp"/>
+                            <outlet property="delegate" destination="a95-wm-nkW" id="1Ja-dh-9up"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNW-fc-LSB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3705" y="-19"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fXC-bW-1A5">
