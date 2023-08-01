@@ -54,7 +54,7 @@ public enum AladinApi {
         case none = "Cover=None"
     }
     /// apiKey
-    static let apiKey = "ttbkey=ttbjoony30001924001"
+    static let apiKey = Bundle.main.Aladin_Api_Key
     /// 표시할 페이지
     /// - Parameter num: 1000 / resultPerPage 만큼 가능
     static func Page(_ num: Int) -> String { return "start=\(num)" }
