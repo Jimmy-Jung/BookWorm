@@ -69,7 +69,6 @@ final class SearchTableViewCell: UITableViewCell {
         if halfRank > 5 {
             return
         }
-        print(halfRank)
         for i in 0..<halfRank {
             starCollection[i].image = filledStar
         }

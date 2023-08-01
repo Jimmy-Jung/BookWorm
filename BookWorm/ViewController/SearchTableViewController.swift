@@ -19,10 +19,8 @@ final class SearchTableViewController: UITableViewController {
     }
     public var searchTerm: String? {
         didSet {
-//            Task{ await network() }
-            // 딜레이를 걸어 API호출 줄이기
             DispatchQueue.main.asyncAfter(
-                deadline: DispatchTime.now() + 1
+                deadline: DispatchTime.now() + 0.3
             ) { [weak self] in
                 Task{ await self?.network() }
             }
