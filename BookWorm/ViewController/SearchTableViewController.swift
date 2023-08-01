@@ -18,13 +18,19 @@ final class SearchTableViewController: UITableViewController {
         super.viewDidLoad()
         setupTableView()
     }
+    private var networkWorkItem: DispatchWorkItem?
+
     public var searchTerm: String? {
         didSet {
-            DispatchQueue.main.asyncAfter(
-                deadline: DispatchTime.now() + 0.3
-            ) { [weak self] in
-                Task{ await self?.network() }
+            // 이전에 예약된 네트워크 요청을 취소합니다.
+            networkWorkItem?.cancel()
+
+            // 지연 후 새로운 네트워크 요청을 예약합니다.
+            let workItem = DispatchWorkItem { [weak self] in
+                Task { await self?.network() }
             }
+            networkWorkItem = workItem
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: workItem)
         }
     }
     
