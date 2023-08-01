@@ -239,11 +239,11 @@
             </objects>
             <point key="canvasLocation" x="1473" y="-19"/>
         </scene>
-        <!--Item-->
+        <!--홈-->
         <scene sceneID="fXC-bW-1A5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PQb-EK-r8I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="eP4-UK-UQX"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" id="eP4-UK-UQX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Xp0-Ey-zmg">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
@@ -269,8 +269,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="s3a-Nw-Xvi"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DEY-tG-Br4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="PQb-EK-r8I" kind="relationship" relationship="viewControllers" id="Byg-Y9-1vz"/>
@@ -281,11 +283,11 @@
             </objects>
             <point key="canvasLocation" x="3189" y="-1446"/>
         </scene>
-        <!--Item-->
+        <!--보관함-->
         <scene sceneID="gqf-j7-kKa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tjn-2L-thC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="S8f-OP-wBG"/>
+                    <tabBarItem key="tabBarItem" title="보관함" image="books.vertical.circle" catalog="system" id="S8f-OP-wBG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ftN-yD-k7r">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
@@ -307,10 +309,15 @@
     </scenes>
     <resources>
         <image name="BookCover" width="50" height="70.333335876464844"/>
+        <image name="books.vertical.circle" catalog="system" width="128" height="123"/>
+        <image name="house" catalog="system" width="128" height="104"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
