@@ -53,8 +53,8 @@ final class NetworkManager {
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
-        print(urlString)
-        return await performRequest(with: urlString)
+        guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return .failure(.urlError)}
+        return await performRequest(with: encodedUrlString)
     }
     
     public func fetchListData(
@@ -71,7 +71,8 @@ final class NetworkManager {
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
-        return await performRequest(with: urlString)
+        guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return .failure(.urlError)}
+        return await performRequest(with: encodedUrlString)
     }
     
     private func performRequest(with urlString: String) async -> NetworkResult {

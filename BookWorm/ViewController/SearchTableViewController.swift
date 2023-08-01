@@ -19,11 +19,10 @@ final class SearchTableViewController: UITableViewController {
     }
     public var searchTerm: String? {
         didSet {
-            print(searchTerm)
 //            Task{ await network() }
             // 딜레이를 걸어 API호출 줄이기
             DispatchQueue.main.asyncAfter(
-                deadline: DispatchTime.now() + 0.3
+                deadline: DispatchTime.now() + 1
             ) { [weak self] in
                 Task{ await self?.network() }
             }
@@ -43,11 +42,15 @@ final class SearchTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         case .failure(let error):
-            self.showCancelAlert(
-                title: "불러오기 실패!!",
-                message: error.localizedDescription,
-                preferredStyle: .alert
-            )
+            if error == .urlError {
+                print(error.localizedDescription)
+            } else {
+                self.showCancelAlert(
+                    title: "불러오기 실패!!",
+                    message: error.localizedDescription,
+                    preferredStyle: .alert
+                )
+            }
         }
     }
     
