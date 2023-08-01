@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="2832.8244274809158" y="-19.014084507042256"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Favorites Book-->
         <scene sceneID="aFD-n5-TWU">
             <objects>
-                <collectionViewController id="K5h-pF-biH" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FavoritesCollectionViewController" id="K5h-pF-biH" customClass="FavoritesCollectionViewController" customModule="BookWorm" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="BFb-Oo-cUH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                             <outlet property="delegate" destination="K5h-pF-biH" id="Ob8-7w-MDE"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="jcd-gM-NUl"/>
+                    <navigationItem key="navigationItem" title="Favorites Book" id="jcd-gM-NUl"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gu-kV-Hp3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,9 +287,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tjn-2L-thC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="S8f-OP-wBG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ftN-yD-k7r">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ftN-yD-k7r">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="compactAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
+                        <navigationBarAppearance key="compactScrollEdgeAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

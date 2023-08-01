@@ -21,7 +21,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         coverImageView.image = nil
         titleLabel.text = ""
         rankLabel.text = ""
-        storeButton.imageView?.image = UIImage(systemName: "star")
+//        storeButton.imageView?.image = UIImage(systemName: "star")
     }
     
     public var size: CGFloat = 100 {
@@ -62,8 +62,9 @@ final class BookCollectionViewCell: UICollectionViewCell {
     private func compareWithUserDefaults() {
         guard let bookInfo else {return}
         let isStored = BookDefaultManager.storedBookList.contains(bookInfo)
-        storeButton.imageView?.image = isStored ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        print(isStored)
+        storeButton.setImage(isStored ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
     }
-
+    
     
 }

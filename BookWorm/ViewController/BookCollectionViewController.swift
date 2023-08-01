@@ -24,6 +24,11 @@ final class BookCollectionViewController: UICollectionViewController {
         Task { await fetchBookList() }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     private func setupSearchController() {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: SearchTableViewController.StoryBoardIdentifier) as! SearchTableViewController

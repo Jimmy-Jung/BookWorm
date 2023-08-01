@@ -30,7 +30,7 @@
 		551774A52A7894F80089D911 /* BookCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774A42A7894F80089D911 /* BookCollectionReusableView.swift */; };
 		551774A92A78D6070089D911 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 551774A82A78D6070089D911 /* Property List.plist */; };
 		551774AB2A78D92A0089D911 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AA2A78D92A0089D911 /* Bundle+Extension.swift */; };
-		551774AD2A78E0040089D911 /* StoredCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AC2A78E0040089D911 /* StoredCollectionViewController.swift */; };
+		551774AD2A78E0040089D911 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AC2A78E0040089D911 /* FavoritesCollectionViewController.swift */; };
 		551774AF2A78E9480089D911 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AE2A78E9480089D911 /* UserDefault.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +70,7 @@
 		551774A42A7894F80089D911 /* BookCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionReusableView.swift; sourceTree = "<group>"; };
 		551774A82A78D6070089D911 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		551774AA2A78D92A0089D911 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
-		551774AC2A78E0040089D911 /* StoredCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredCollectionViewController.swift; sourceTree = "<group>"; };
+		551774AC2A78E0040089D911 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
 		551774AE2A78E9480089D911 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,7 +165,7 @@
 				5517745F2A77C08D0089D911 /* BookCollectionViewController.swift */,
 				5517749C2A7829550089D911 /* DetailViewController.swift */,
 				5517749E2A78896C0089D911 /* SearchTableViewController.swift */,
-				551774AC2A78E0040089D911 /* StoredCollectionViewController.swift */,
+				551774AC2A78E0040089D911 /* FavoritesCollectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -327,7 +327,7 @@
 				551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */,
 				5517749F2A78896C0089D911 /* SearchTableViewController.swift in Sources */,
 				551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */,
-				551774AD2A78E0040089D911 /* StoredCollectionViewController.swift in Sources */,
+				551774AD2A78E0040089D911 /* FavoritesCollectionViewController.swift in Sources */,
 				551774AF2A78E9480089D911 /* UserDefault.swift in Sources */,
 				551774962A7805BC0089D911 /* AladinApi.swift in Sources */,
 				5517745C2A77C08D0089D911 /* AppDelegate.swift in Sources */,

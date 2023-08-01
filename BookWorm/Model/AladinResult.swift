@@ -32,4 +32,5 @@ struct BookInfo: Codable, Hashable {
     static func == (lhs: BookInfo, rhs: BookInfo) -> Bool {
         return lhs.title == rhs.title && lhs.author == rhs.author
     }
+    
 }
