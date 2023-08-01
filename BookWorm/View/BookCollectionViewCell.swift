@@ -16,8 +16,10 @@ final class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func prepareForReuse() {
+        coverImageView.image = nil
+        titleLabel.text = ""
+        rankLabel.text = ""
     }
     
     public var size: CGFloat = 100 {

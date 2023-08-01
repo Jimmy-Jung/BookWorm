@@ -40,7 +40,7 @@ final class NetworkManager {
     
     public func fetchSearchData(
         searchTerm: String,
-        resultPerPage max: Int = 50,
+        resultPerPage max: Int = 20,
         page: Int = 1,
         coverSize: AladinApi.CoverSize = .midBig
     ) async -> NetworkResult {
@@ -53,6 +53,7 @@ final class NetworkManager {
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
+        print(urlString)
         return await performRequest(with: urlString)
     }
     

@@ -45,6 +45,9 @@ final class DetailViewController: UIViewController {
         descriptionLabel.text = description
         
         configImage()
+        starCollection.forEach {
+            $0.image = UIImage(systemName: "star")
+        }
         configStar(rank: rank)
     }
     
@@ -57,21 +60,16 @@ final class DetailViewController: UIViewController {
     private func configStar(rank: Int) {
         let filledStar = UIImage(systemName: "star.fill")
         let halfFilledStar = UIImage(systemName: "star.lefthalf.fill")
-        let emptyStar = UIImage(systemName: "star")
-        
-        let rankAsFloat = Float(rank)
-        let numberOfFullStars = Int(rankAsFloat / 2.0)
-        let hasHalfStar = rankAsFloat.truncatingRemainder(dividingBy: 2.0) != 0
-        let numberOfEmptyStars = 5 - numberOfFullStars - (hasHalfStar ? 1 : 0)
-        
-        for i in 0..<numberOfFullStars {
+        let halfRank = rank / 2
+        if halfRank > 5 {
+            return
+        }
+        print(halfRank)
+        for i in 0..<halfRank {
             starCollection[i].image = filledStar
         }
-        if (hasHalfStar) {
-            starCollection[numberOfFullStars].image = halfFilledStar
-        }
-        for i in (numberOfFullStars + 1)..<(numberOfFullStars + 1 + numberOfEmptyStars) {
-            starCollection[i].image = emptyStar
+        if rank % 2 != 0 {
+            starCollection[halfRank].image = halfFilledStar
         }
     }
     
