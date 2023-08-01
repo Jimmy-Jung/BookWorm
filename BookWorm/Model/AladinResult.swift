@@ -17,7 +17,7 @@ struct AladinResult: Codable {
 }
 
 // MARK: - Item
-struct BookInfo: Codable {
+struct BookInfo: Codable, Hashable {
     let title: String?
     let link: String?
     let author: String?
@@ -28,4 +28,8 @@ struct BookInfo: Codable {
     let categoryName: String?
     let publisher: String?
     let customerReviewRank: Int?
+    
+    static func == (lhs: BookInfo, rhs: BookInfo) -> Bool {
+        return lhs.title == rhs.title && lhs.author == rhs.author
+    }
 }

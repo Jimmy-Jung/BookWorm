@@ -36,6 +36,7 @@ final class SearchTableViewCell: UITableViewCell {
             configContent()
         }
     }
+    
     private func configContent() {
         guard let bookInfo else {return}
         let category = bookInfo.categoryName ?? "카테고리"

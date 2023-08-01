@@ -25,7 +25,6 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         configContent()
         title = "상세 설명"
-        // Do any additional setup after loading the view.
     }
     private func configContent() {
         let category = bookInfo.categoryName ?? "카테고리"
@@ -64,7 +63,6 @@ final class DetailViewController: UIViewController {
         if halfRank > 5 {
             return
         }
-        print(halfRank)
         for i in 0..<halfRank {
             starCollection[i].image = filledStar
         }

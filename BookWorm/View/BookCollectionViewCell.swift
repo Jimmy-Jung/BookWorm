@@ -15,11 +15,13 @@ final class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var storeButton: UIButton!
     
     override func prepareForReuse() {
         coverImageView.image = nil
         titleLabel.text = ""
         rankLabel.text = ""
+        storeButton.imageView?.image = UIImage(systemName: "star")
     }
     
     public var size: CGFloat = 100 {
@@ -27,14 +29,20 @@ final class BookCollectionViewCell: UICollectionViewCell {
             backView.frame.size = CGSize(width: size, height: size)
         }
     }
+    public var bookInfo: BookInfo? {
+        didSet {
+            configureCell()
+            compareWithUserDefaults()
+        }
+    }
     
-    public func configureCell(from book: BookInfo) {
+    private func configureCell() {
         setupLayout()
+        guard let book = bookInfo else {return}
         let title = book.title ?? "책 이름"
         let rank = book.customerReviewRank ?? 0
         let imageUrl = book.cover ?? ""
         let url = URL(string: imageUrl)
-        
         titleLabel.text = title
         rankLabel.text = "\(rank)/10"
         if url != nil {
@@ -50,6 +58,11 @@ final class BookCollectionViewCell: UICollectionViewCell {
         coverImageView.clipsToBounds = true
         coverImageView.layer.cornerRadius = 10
         
+    }
+    private func compareWithUserDefaults() {
+        guard let bookInfo else {return}
+        let isStored = BookDefaultManager.storedBookList.contains(bookInfo)
+        storeButton.imageView?.image = isStored ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
     }
 
     

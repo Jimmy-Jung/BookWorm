@@ -38,6 +38,16 @@
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5P-4u-zbP">
+                                <rect key="frame" x="13.666666666666664" y="74.666666666666671" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="p68-rB-Jkr"/>
+                                    <constraint firstAttribute="width" constant="50" id="zMd-DS-3xH"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
@@ -46,8 +56,10 @@
                             <constraint firstAttribute="trailing" secondItem="RT7-Ib-uo1" secondAttribute="trailing" constant="8" id="Ckf-Nq-alE"/>
                             <constraint firstItem="HCb-9j-brX" firstAttribute="top" secondItem="xZZ-nD-J71" secondAttribute="top" constant="8" id="Dd8-8G-oEi"/>
                             <constraint firstAttribute="trailing" secondItem="HCb-9j-brX" secondAttribute="trailing" constant="8" id="FfP-2I-hJA"/>
+                            <constraint firstItem="UCC-ea-SzM" firstAttribute="top" secondItem="w5P-4u-zbP" secondAttribute="bottom" constant="10" id="W3o-3J-ZJa"/>
                             <constraint firstItem="UCC-ea-SzM" firstAttribute="leading" secondItem="xZZ-nD-J71" secondAttribute="leading" constant="8" id="h69-fs-bvA"/>
                             <constraint firstItem="HCb-9j-brX" firstAttribute="leading" secondItem="xZZ-nD-J71" secondAttribute="leading" constant="8" id="lo5-si-RyU"/>
+                            <constraint firstItem="w5P-4u-zbP" firstAttribute="centerX" secondItem="UCC-ea-SzM" secondAttribute="centerX" id="tdT-d5-fhB"/>
                             <constraint firstAttribute="bottom" secondItem="UCC-ea-SzM" secondAttribute="bottom" constant="16" id="xzY-X3-Is2"/>
                             <constraint firstAttribute="bottom" secondItem="RT7-Ib-uo1" secondAttribute="bottom" id="yQr-JX-UPE"/>
                         </constraints>
@@ -66,6 +78,7 @@
                 <outlet property="backView" destination="xZZ-nD-J71" id="cZt-ax-Ir5"/>
                 <outlet property="coverImageView" destination="RT7-Ib-uo1" id="2eS-8T-6dR"/>
                 <outlet property="rankLabel" destination="UCC-ea-SzM" id="eQ6-4g-bEJ"/>
+                <outlet property="storeButton" destination="w5P-4u-zbP" id="k6J-UT-5vw"/>
                 <outlet property="titleLabel" destination="HCb-9j-brX" id="NVe-Y2-73a"/>
             </connections>
             <point key="canvasLocation" x="85.496183206106863" y="30.281690140845072"/>
@@ -73,6 +86,10 @@
     </objects>
     <resources>
         <image name="BookCover" width="50" height="70.333335876464844"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

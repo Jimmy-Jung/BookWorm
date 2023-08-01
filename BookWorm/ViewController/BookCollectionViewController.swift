@@ -86,12 +86,26 @@ final class BookCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! BookCollectionViewCell
-        cell.configureCell(from: bookList[indexPath.item])
+        cell.bookInfo = bookList[indexPath.item]
         cell.size = cellSize
+        cell.storeButton.tag = indexPath.item
+        cell.storeButton
+            .addTarget(self, action: #selector(storeButtonTapped(_:)), for: .touchUpInside)
         return cell
     }
     
+    @objc private func storeButtonTapped(_ sender: UIButton) {
+        let isStored = BookDefaultManager.storedBookList.contains(bookList[sender.tag])
+        if isStored {
+            BookDefaultManager.storedBookList.remove(bookList[sender.tag])
+        } else {
+            BookDefaultManager.storedBookList.insert(bookList[sender.tag])
+        }
+        collectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: DetailViewController.StoryBoardIdentifier) as! DetailViewController
         vc.bookInfo = bookList[indexPath.item]
