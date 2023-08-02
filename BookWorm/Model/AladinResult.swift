@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit.UIColor
 
 // MARK: - SearchResult
 struct AladinResult: Codable {
@@ -28,9 +29,26 @@ struct BookInfo: Codable, Hashable {
     let categoryName: String?
     let publisher: String?
     let customerReviewRank: Int?
+    var backgroundColor: RGB?
     
     static func == (lhs: BookInfo, rhs: BookInfo) -> Bool {
         return lhs.title == rhs.title && lhs.author == rhs.author
     }
+    func getRGB() -> UIColor {
+        guard let BG = backgroundColor else {return UIColor.black}
+        
+        return UIColor(red: BG.red, green: BG.green, blue: BG.blue, alpha: 1)
+    }
+    mutating func setColor() { backgroundColor = .init() }
     
+    struct RGB: Codable, Hashable {
+        let red: CGFloat
+        let green: CGFloat
+        let blue: CGFloat
+        init() {
+            self.red = CGFloat.random(in: 0.5...0.9)
+            self.green = CGFloat.random(in: 0.5...0.9)
+            self.blue = CGFloat.random(in: 0.5...0.9)
+        }
+    }
 }

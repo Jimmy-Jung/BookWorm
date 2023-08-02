@@ -53,7 +53,9 @@ final class BookCollectionViewController: UICollectionViewController {
         switch list {
         case .success(let result):
             guard let items = result.item else {return}
-            bookList.append(contentsOf: items)
+            let coloredItems = makeRGB(items)
+            bookList.append(contentsOf: coloredItems)
+            print("network")
         case .failure(let error):
             bookList = []
             self.showCancelAlert(
@@ -63,6 +65,15 @@ final class BookCollectionViewController: UICollectionViewController {
             )
         }
         collectionView.reloadData()
+    }
+    
+    private func makeRGB(_ bookList: [BookInfo]) -> [BookInfo] {
+        let items = bookList.map {
+            var book = $0
+            book.setColor()
+            return book
+        }
+        return items
     }
     
     private func setupCollectionView() {

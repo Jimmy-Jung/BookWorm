@@ -36,6 +36,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
     private func configureCell() {
         setupLayout()
         guard let book = bookInfo else {return}
@@ -43,6 +44,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         let rank = book.customerReviewRank ?? 0
         let imageUrl = book.cover ?? ""
         let url = URL(string: imageUrl)
+        backView.backgroundColor = book.getRGB()
         titleLabel.text = title
         rankLabel.text = "\(rank)/10"
         if url != nil {
@@ -52,7 +54,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
         }
     }
     private func setupLayout() {
-        backView.backgroundColor = UIColor.thinRandom()
+        
         backView.clipsToBounds = true
         backView.layer.cornerRadius = 10
         coverImageView.clipsToBounds = true
