@@ -32,6 +32,10 @@
 		551774AB2A78D92A0089D911 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AA2A78D92A0089D911 /* Bundle+Extension.swift */; };
 		551774AD2A78E0040089D911 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AC2A78E0040089D911 /* FavoritesCollectionViewController.swift */; };
 		551774AF2A78E9480089D911 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774AE2A78E9480089D911 /* UserDefault.swift */; };
+		551774B62A7A67830089D911 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774B52A7A67830089D911 /* BrowseViewController.swift */; };
+		551774B92A7A6A650089D911 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */; };
+		551774BA2A7A6A650089D911 /* BrowseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */; };
+		551774BD2A7A75DA0089D911 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 551774BC2A7A75DA0089D911 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,9 @@
 		551774AA2A78D92A0089D911 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		551774AC2A78E0040089D911 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
 		551774AE2A78E9480089D911 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		551774B52A7A67830089D911 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
+		551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551774942A77FFF90089D911 /* Kingfisher in Frameworks */,
+				551774BD2A7A75DA0089D911 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +163,8 @@
 				551774A02A7889DD0089D911 /* SearchTableViewCell.swift */,
 				551774A12A7889DD0089D911 /* SearchTableViewCell.xib */,
 				551774A42A7894F80089D911 /* BookCollectionReusableView.swift */,
+				551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */,
+				551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +176,7 @@
 				5517749C2A7829550089D911 /* DetailViewController.swift */,
 				5517749E2A78896C0089D911 /* SearchTableViewController.swift */,
 				551774AC2A78E0040089D911 /* FavoritesCollectionViewController.swift */,
+				551774B52A7A67830089D911 /* BrowseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -224,6 +235,7 @@
 			name = BookWorm;
 			packageProductDependencies = (
 				551774932A77FFF90089D911 /* Kingfisher */,
+				551774BC2A7A75DA0089D911 /* SnapKit */,
 			);
 			productName = BookWorm;
 			productReference = 551774582A77C08D0089D911 /* BookWorm.app */;
@@ -277,6 +289,7 @@
 			mainGroup = 5517744F2A77C08D0089D911;
 			packageReferences = (
 				551774922A77FFF90089D911 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				551774BB2A7A75DA0089D911 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 551774592A77C08D0089D911 /* Products */;
 			projectDirPath = "";
@@ -294,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				551774A92A78D6070089D911 /* Property List.plist in Resources */,
+				551774BA2A7A6A650089D911 /* BrowseCollectionViewCell.xib in Resources */,
 				551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */,
 				551774912A77F7650089D911 /* BookCollectionViewCell.xib in Resources */,
 				551774652A77C08F0089D911 /* Assets.xcassets in Resources */,
@@ -321,7 +335,9 @@
 				5517749D2A7829550089D911 /* DetailViewController.swift in Sources */,
 				551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */,
 				551774782A77C2690089D911 /* Constants.swift in Sources */,
+				551774B92A7A6A650089D911 /* BrowseCollectionViewCell.swift in Sources */,
 				551774762A77C1560089D911 /* NetworkManager.swift in Sources */,
+				551774B62A7A67830089D911 /* BrowseViewController.swift in Sources */,
 				551774602A77C08D0089D911 /* BookCollectionViewController.swift in Sources */,
 				5517747A2A77D0210089D911 /* AladinResult.swift in Sources */,
 				551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */,
@@ -629,6 +645,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		551774BB2A7A75DA0089D911 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -636,6 +660,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 551774922A77FFF90089D911 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		551774BC2A7A75DA0089D911 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 551774BB2A7A75DA0089D911 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
