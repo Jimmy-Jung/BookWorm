@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 final class DetailViewController: UIViewController {
     static let StoryBoardIdentifier = "DetailViewController"
@@ -25,6 +26,16 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         configContent()
         title = "상세 설명"
+    }
+    @IBAction func buyButtonTapped(_ sender: UIButton) {
+        guard let urlString = bookInfo.link else {
+            self.showCancelAlert(title: "웹페이지를 열 수 없습니다.", message: "주소가 잘못되었습니다. 다시 시도해 주세요.", preferredStyle: .alert)
+            return
+        }
+        if let url = URL(string: urlString) {
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true)
+        }
     }
     private func configContent() {
         let category = bookInfo.categoryName ?? "카테고리"

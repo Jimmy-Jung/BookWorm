@@ -103,6 +103,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="RhQ-ba-DEt" secondAttribute="bottom" constant="8" id="8Qk-bG-zy5"/>
                     <constraint firstAttribute="trailing" secondItem="RhQ-ba-DEt" secondAttribute="trailing" constant="8" id="9KQ-y7-bS8"/>
@@ -134,6 +135,9 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

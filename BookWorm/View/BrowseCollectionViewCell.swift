@@ -6,14 +6,24 @@
 //
 
 import UIKit
+import Kingfisher
 
-class BrowseCollectionViewCell: UICollectionViewCell {
+final class BrowseCollectionViewCell: UICollectionViewCell {
     static let identifier = "BrowseCollectionViewCell"
 
     @IBOutlet weak var coverImageView: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    override func prepareForReuse() {
+        coverImageView.image = UIImage(named: ImageString.defaultBookCover)
     }
 
+    public var bookInfo: BookInfo? {
+        didSet { configImage() }
+    }
+    
+    private func configImage() {
+        guard let imageUrl = bookInfo?.cover,
+        let url = URL(string: imageUrl) else { return }
+        coverImageView.kf.setImage(with: url)
+    }
 }

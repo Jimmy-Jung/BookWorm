@@ -19,54 +19,50 @@ final class BookCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         coverImageView.image = nil
-        titleLabel.text = ""
+        titleLabel.text = "데이터 불러오기 실패"
         rankLabel.text = ""
-//        storeButton.imageView?.image = UIImage(systemName: "star")
+        coverImageView.image = UIImage(named: ImageString.defaultBookCover)
     }
     
     public var size: CGFloat = 100 {
-        didSet {
-            backView.frame.size = CGSize(width: size, height: size)
-        }
+        didSet { backView.frame.size = CGSize(width: size, height: size) }
     }
+    
     public var bookInfo: BookInfo? {
         didSet {
             configureCell()
+            setupLayout()
+            configImage()
             compareWithUserDefaults()
         }
     }
     
-    
     private func configureCell() {
-        setupLayout()
-        guard let book = bookInfo else {return}
-        let title = book.title ?? "책 이름"
-        let rank = book.customerReviewRank ?? 0
-        let imageUrl = book.cover ?? ""
-        let url = URL(string: imageUrl)
-        backView.backgroundColor = book.getRGB()
+        let title = bookInfo?.title ?? "책 이름"
+        let rank = bookInfo?.customerReviewRank ?? 0
         titleLabel.text = title
         rankLabel.text = "\(rank)/10"
-        if url != nil {
-            coverImageView.kf.setImage(with: url)
-        } else {
-            coverImageView.image = UIImage(named: ImageString.defaultBookCover)
-        }
     }
+    
     private func setupLayout() {
-        
+        backView.backgroundColor = bookInfo?.getRGB()
         backView.clipsToBounds = true
         backView.layer.cornerRadius = 10
         coverImageView.clipsToBounds = true
         coverImageView.layer.cornerRadius = 10
-        
     }
+    
     private func compareWithUserDefaults() {
         guard let bookInfo else {return}
         let isStored = BookDefaultManager.storedBookList.contains(bookInfo)
-        print(isStored)
-        storeButton.setImage(isStored ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
+        let image = isStored ?
+        UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        storeButton.setImage(image, for: .normal)
     }
     
-    
+    private func configImage() {
+        guard let imageUrl = bookInfo?.cover,
+        let url = URL(string: imageUrl) else { return }
+        coverImageView.kf.setImage(with: url)
+    }
 }

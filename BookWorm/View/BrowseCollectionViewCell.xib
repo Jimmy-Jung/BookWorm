@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="211"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="O8Q-Jy-kW2">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookCover" translatesAutoresizingMaskIntoConstraints="NO" id="O8Q-Jy-kW2">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="211"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="O8Q-Jy-kW2" secondAttribute="height" multiplier="150:211" id="z3b-pS-lKZ"/>
@@ -39,6 +39,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="BookCover" width="50" height="70.333335876464844"/>
+        <image name="defaultBookCover" width="133.33332824707031" height="200"/>
     </resources>
 </document>

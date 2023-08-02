@@ -38,6 +38,13 @@ final class NetworkManager {
     typealias AS = AladinApi.Search
     typealias AL = AladinApi.List
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - searchTerm: 검색어
+    ///   - max: 페이지 당 갯수(디폴트값: 20개)
+    ///   - page: 현재 페이지(디폴트값: 1)
+    ///   - coverSize: 이미지 사이즈(중간 크기(기본값) : 너비 85px)
+    /// - Returns: Result<AladinResult, NetworkError>
     public func fetchSearchData(
         searchTerm: String,
         resultPerPage max: Int = 20,
@@ -57,6 +64,13 @@ final class NetworkManager {
         return await performRequest(with: encodedUrlString)
     }
     
+    /// 리스트 가져오기
+    /// - Parameters:
+    ///   - kind: 리스트 종류(디폴트값 : 베스트셀러)
+    ///   - max: 페이지 당 갯수(디폴트값: 50개)
+    ///   - page: 현재 페이지(디폴트값: 1)
+    ///   - coverSize: 이미지 사이즈(중간 크기(기본값) : 너비 85px)
+    /// - Returns: Result<AladinResult, NetworkError>
     public func fetchListData(
         kindOfList kind: AL.KindOfList = .Bestseller,
         resultPerPage max: Int = 50,
@@ -77,6 +91,7 @@ final class NetworkManager {
     
     private func performRequest(with urlString: String) async -> NetworkResult {
         do {
+            print(urlString)
             guard let url = URL(string: urlString) else {return .failure(.urlError)}
             let (data, response) = try await URLSession.shared.data(from: url)
             guard let httpResponse = response as? HTTPURLResponse,

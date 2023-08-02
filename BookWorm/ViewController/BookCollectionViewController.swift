@@ -55,7 +55,6 @@ final class BookCollectionViewController: UICollectionViewController {
             guard let items = result.item else {return}
             let coloredItems = makeRGB(items)
             bookList.append(contentsOf: coloredItems)
-            print("network")
         case .failure(let error):
             bookList = []
             self.showCancelAlert(
@@ -121,7 +120,6 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: DetailViewController.StoryBoardIdentifier) as! DetailViewController
         vc.bookInfo = bookList[indexPath.item]

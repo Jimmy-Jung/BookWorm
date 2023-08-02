@@ -20,27 +20,27 @@ final class SearchTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         categoryNameLabel.text = ""
-        titleLabel.text = ""
+        titleLabel.text = "데이터 불러오기 실패"
         authorLabel.text = ""
         customerReviewRankLabel.text = ""
         priceStandard.text = ""
         priceSales.text = ""
-        coverImageView.image = nil
-        starCollection.forEach {
-            $0.image = UIImage(systemName: "star")
-        }
+        coverImageView.image = UIImage(named: ImageString.defaultBookCover)
+        starCollection.forEach { $0.image = UIImage(systemName: "star") }
     }
-    
+
     public var bookInfo: BookInfo? {
         didSet {
             configContent()
+            configImage()
+            configStar()
         }
     }
     
     private func configContent() {
         guard let bookInfo else {return}
         let category = bookInfo.categoryName ?? "카테고리"
-        let title = bookInfo.title ?? "책 이름"
+        let title = bookInfo.title ?? "데이터 불러오기 실패"
         let autor = bookInfo.author ?? "저자"
         let rank = bookInfo.customerReviewRank ?? 0
         let priceSD = bookInfo.priceStandard ?? 0
@@ -52,9 +52,6 @@ final class SearchTableViewCell: UITableViewCell {
         customerReviewRankLabel.text = "(\(rank))"
         priceStandard.text = makePriceString(price: priceSD) + "→"
         priceSales.text = makePriceString(price: priceSL)
-        
-        configImage()
-        configStar(rank: rank)
     }
     
     private func makePriceString(price: Int) -> String {
@@ -63,7 +60,8 @@ final class SearchTableViewCell: UITableViewCell {
         return formatter.string(from: NSNumber(value: price))! + "원"
     }
 
-    private func configStar(rank: Int) {
+    private func configStar() {
+        let rank = bookInfo?.customerReviewRank ?? 0
         let filledStar = UIImage(systemName: "star.fill")
         let halfFilledStar = UIImage(systemName: "star.lefthalf.fill")
         let halfRank = rank / 2
@@ -79,12 +77,8 @@ final class SearchTableViewCell: UITableViewCell {
     }
     
     private func configImage() {
-        let imageUrl = bookInfo?.cover ?? ""
-        let url = URL(string: imageUrl)
-        if url != nil {
-            coverImageView.kf.setImage(with: url)
-        } else {
-            coverImageView.image = UIImage(named: ImageString.defaultBookCover)
-        }
+        guard let imageUrl = bookInfo?.cover,
+        let url = URL(string: imageUrl) else { return }
+        coverImageView.kf.setImage(with: url)
     }
 }
