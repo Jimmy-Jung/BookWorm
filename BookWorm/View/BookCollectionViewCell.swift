@@ -18,17 +18,18 @@ final class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var storeButton: UIButton!
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         coverImageView.image = nil
         titleLabel.text = "데이터 불러오기 실패"
         rankLabel.text = ""
         coverImageView.image = UIImage(named: ImageString.defaultBookCover)
     }
     
-    public var size: CGFloat = 100 {
+    var size: CGFloat = 100 {
         didSet { backView.frame.size = CGSize(width: size, height: size) }
     }
     
-    public var bookInfo: BookInfo? {
+    var bookInfo: BookInfo? {
         didSet {
             configureCell()
             setupLayout()

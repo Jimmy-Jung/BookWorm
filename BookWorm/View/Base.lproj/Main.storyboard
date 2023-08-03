@@ -162,14 +162,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BookCover" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-ZP-yej">
-                                <rect key="frame" x="20" y="78.999999999999986" width="100" height="140.66666666666663"/>
+                                <rect key="frame" x="19.999999999999993" y="79.000000000000014" width="98.333333333333314" height="138.33333333333337"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f0j-ZP-yej" secondAttribute="height" multiplier="150:211" id="DxT-rn-aBC"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="V1k-Ez-JUo"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5nI-Gk-0jm">
-                                <rect key="frame" x="136" y="79" width="237" height="122.33333333333331"/>
+                                <rect key="frame" x="134.33333333333337" y="79" width="238.66666666666663" height="122.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="국내도서&gt;만화&gt;순정만화&gt;레이디스 코믹" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksi-Vs-qni">
                                         <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="13.333333333333334"/>
@@ -238,7 +237,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZXf-da-Vig">
-                                <rect key="frame" x="20" y="239.66666666666663" width="353" height="144.33333333333337"/>
+                                <rect key="frame" x="20" y="237.33333333333331" width="353" height="144.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpi-5z-Khl">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="24"/>
@@ -246,9 +245,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adH-Ei-UlS">
-                                        <rect key="frame" x="0.0" y="36.000000000000021" width="353" height="108.33333333333331"/>
-                                        <string key="text">‘함께 성장해나가는 우리 세대의 소설가’를 갖는 드문 경험을 선사하며 동료 작가와 평론가, 독자 모두에게 특별한 이름으로 자리매김한 최은영의 세번째 소설집. 이번 소설집은 이전 작품들에 담긴 문제의식을 한층 더 깊고 날카로운 시선으로 이어나간다.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adH-Ei-UlS">
+                                        <rect key="frame" x="0.0" y="35.999999999999964" width="353" height="108.33333333333331"/>
+                                        <string key="text">‘함께 성장해나가는 우리 세대의 소설가’를 갖는 드문 경험을 선사하며 동료 작가와 평론가, 독자 모두에게 특별한 이름으로 자리매김한 최은영의 세번째 소설집. 이번 소설집은 이전 작품들에 담긴 문제의식을 한층 더 깊고 날카로운 시선으로 이어나간다. </string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -256,7 +255,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eT5-t0-M02">
-                                <rect key="frame" x="80" y="758" width="233" height="40"/>
+                                <rect key="frame" x="20" y="758" width="353" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FYN-wt-BK9"/>
                                 </constraints>
@@ -269,21 +268,73 @@
                                     <action selector="buyButtonTapped:" destination="shr-Oa-FKb" eventType="touchUpInside" id="zKl-4a-XDT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-gB-nRJ">
+                                <rect key="frame" x="269.33333333333331" y="361.66666666666669" width="103.66666666666669" height="20"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="80k-jH-pUy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="...더보기       ">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="moreButtonTapped:" destination="shr-Oa-FKb" eventType="touchUpInside" id="0Lo-Pa-9R6"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZS-hW-4hM">
+                                <rect key="frame" x="20" y="401.66666666666674" width="353" height="336.33333333333326"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iIL-2A-QCl">
+                                        <rect key="frame" x="20" y="20" width="313" height="296.33333333333331"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIo-aj-CS9">
+                                                <rect key="frame" x="0.0" y="0.0" width="313" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" text="텍스트를 입력하세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Kcf-Bc-epx">
+                                                <rect key="frame" x="0.0" y="24" width="313" height="272.33333333333331"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iIL-2A-QCl" secondAttribute="bottom" constant="20" id="4m2-4S-hew"/>
+                                    <constraint firstItem="iIL-2A-QCl" firstAttribute="top" secondItem="cZS-hW-4hM" secondAttribute="top" constant="20" id="Ad8-Q1-18i"/>
+                                    <constraint firstAttribute="trailing" secondItem="iIL-2A-QCl" secondAttribute="trailing" constant="20" symbolic="YES" id="OIO-14-z9r"/>
+                                    <constraint firstItem="iIL-2A-QCl" firstAttribute="leading" secondItem="cZS-hW-4hM" secondAttribute="leading" constant="20" symbolic="YES" id="P8B-h1-9dY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0cP-jC-mey"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eT5-t0-M02" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="80" id="0ac-wO-23w"/>
+                            <constraint firstItem="eT5-t0-M02" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="0ac-wO-23w"/>
+                            <constraint firstItem="dCR-gB-nRJ" firstAttribute="trailing" secondItem="adH-Ei-UlS" secondAttribute="trailing" id="0fa-9Z-XLs"/>
                             <constraint firstItem="5nI-Gk-0jm" firstAttribute="leading" secondItem="f0j-ZP-yej" secondAttribute="trailing" constant="16" id="3Xc-47-qRw"/>
                             <constraint firstAttribute="trailing" secondItem="ZXf-da-Vig" secondAttribute="trailing" constant="20" id="6P0-7w-sby"/>
                             <constraint firstItem="5nI-Gk-0jm" firstAttribute="top" secondItem="0cP-jC-mey" secondAttribute="top" constant="20" id="8aU-VH-jFF"/>
-                            <constraint firstItem="0cP-jC-mey" firstAttribute="trailing" secondItem="eT5-t0-M02" secondAttribute="trailing" constant="80" id="BSS-8N-gGq"/>
+                            <constraint firstItem="cZS-hW-4hM" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="9zf-lx-myN"/>
+                            <constraint firstItem="dCR-gB-nRJ" firstAttribute="bottom" secondItem="adH-Ei-UlS" secondAttribute="bottom" id="AiK-iR-N4e"/>
+                            <constraint firstItem="0cP-jC-mey" firstAttribute="trailing" secondItem="eT5-t0-M02" secondAttribute="trailing" constant="20" id="BSS-8N-gGq"/>
+                            <constraint firstItem="eT5-t0-M02" firstAttribute="top" secondItem="cZS-hW-4hM" secondAttribute="bottom" constant="20" id="C0l-1N-v0c"/>
                             <constraint firstItem="0cP-jC-mey" firstAttribute="trailing" secondItem="5nI-Gk-0jm" secondAttribute="trailing" constant="20" id="EhR-3s-28C"/>
                             <constraint firstItem="f0j-ZP-yej" firstAttribute="top" secondItem="0cP-jC-mey" secondAttribute="top" constant="20" id="FPV-ZH-4D8"/>
+                            <constraint firstItem="cZS-hW-4hM" firstAttribute="top" secondItem="ZXf-da-Vig" secondAttribute="bottom" constant="20" id="KFl-7Z-rYk"/>
+                            <constraint firstItem="f0j-ZP-yej" firstAttribute="width" secondItem="cPj-wP-MBl" secondAttribute="width" multiplier="0.25" id="PZq-g5-wwZ"/>
                             <constraint firstItem="f0j-ZP-yej" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="Zas-24-ajq"/>
                             <constraint firstItem="eT5-t0-M02" firstAttribute="centerX" secondItem="cPj-wP-MBl" secondAttribute="centerX" id="b23-oi-GDE"/>
                             <constraint firstItem="ZXf-da-Vig" firstAttribute="top" secondItem="f0j-ZP-yej" secondAttribute="bottom" constant="20" id="jw3-C5-KSq"/>
                             <constraint firstItem="ZXf-da-Vig" firstAttribute="leading" secondItem="0cP-jC-mey" secondAttribute="leading" constant="20" id="lsR-BI-5pV"/>
+                            <constraint firstItem="0cP-jC-mey" firstAttribute="trailing" secondItem="cZS-hW-4hM" secondAttribute="trailing" constant="20" id="lw0-6i-am6"/>
                             <constraint firstItem="0cP-jC-mey" firstAttribute="bottom" secondItem="eT5-t0-M02" secondAttribute="bottom" constant="20" id="pPL-oQ-oZr"/>
                         </constraints>
                     </view>
@@ -294,6 +345,8 @@
                         <outlet property="coverImageView" destination="f0j-ZP-yej" id="gSR-ei-GYI"/>
                         <outlet property="customerReviewRankLabel" destination="ZDv-tP-3iL" id="GV9-fB-Gke"/>
                         <outlet property="descriptionLabel" destination="adH-Ei-UlS" id="V2H-Wm-Uyd"/>
+                        <outlet property="memoTextView" destination="Kcf-Bc-epx" id="xm9-VX-bSl"/>
+                        <outlet property="moreButton" destination="dCR-gB-nRJ" id="WhZ-zy-t2I"/>
                         <outlet property="priceSales" destination="K9N-Ki-0PB" id="HRL-Zm-jqO"/>
                         <outlet property="priceStandard" destination="dch-fF-Eas" id="7jb-ti-zhg"/>
                         <outlet property="titleLabel" destination="7Bw-iC-ByK" id="1O4-85-7Py"/>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookCollectionReusableView: UICollectionReusableView {
+final class BookCollectionReusableView: UICollectionReusableView {
     static let identifier = "BookCollectionReusableView"
     
     @IBOutlet weak var sectionHeaderViewLabel: UILabel!

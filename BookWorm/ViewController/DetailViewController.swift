@@ -25,15 +25,28 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var priceStandard: UILabel!
     @IBOutlet weak var priceSales: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var memoTextView: UITextView!
     var bookInfo: BookInfo!
     var type: presentType?
+    let placeholderText = "텍스트를 입력하세요."
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "상세 설명"
         configContent()
         makeCloseButton()
-        title = "상세 설명"
+        configDescription()
+        memoTextView.delegate = self
     }
+
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+        if descriptionLabel.countCurrentLines() > 5 {
+            descriptionLabel.numberOfLines = 8
+            sender.isHidden = true
+        }
+    }
+    
     @IBAction func buyButtonTapped(_ sender: UIButton) {
         guard let urlString = bookInfo.link else {
             self.showCancelAlert(
@@ -48,7 +61,13 @@ final class DetailViewController: UIViewController {
             present(safariVC, animated: true)
         }
     }
-    
+    private func configDescription() {
+        descriptionLabel.numberOfLines = 5
+        if descriptionLabel.countCurrentLines() <= 5 {
+            moreButton.isHidden = true
+        }
+        
+    }
     private func makeCloseButton() {
         switch type {
         case .full:
@@ -119,4 +138,19 @@ final class DetailViewController: UIViewController {
         }
     }
 
+}
+
+extension DetailViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholderText {
+            textView.text = ""
+            textView.textColor = .label
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+            textView.textColor = .lightGray
+        }
+    }
 }

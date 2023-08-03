@@ -183,7 +183,6 @@ extension BookCollectionViewController: UISearchResultsUpdating {
         // 컬렉션뷰에 찾으려는 단어 전달
         guard let text = searchController.searchBar.text,
                 !text.isEmpty else {return}
-        print("서치바에 입력되는 단어", text)
         vc.searchTerm = text
     }
 }

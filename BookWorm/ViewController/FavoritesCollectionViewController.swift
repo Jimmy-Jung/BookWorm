@@ -8,7 +8,7 @@
 import UIKit
 
 
-class FavoritesCollectionViewController: UICollectionViewController {
+final class FavoritesCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "FavoritesCollectionViewController"
     private let cellIdentifier = BookCollectionViewCell.identifier
     

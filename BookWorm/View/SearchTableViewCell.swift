@@ -19,6 +19,7 @@ final class SearchTableViewCell: UITableViewCell {
     @IBOutlet private weak var priceSales: UILabel!
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         categoryNameLabel.text = ""
         titleLabel.text = "데이터 불러오기 실패"
         authorLabel.text = ""
@@ -29,7 +30,7 @@ final class SearchTableViewCell: UITableViewCell {
         starCollection.forEach { $0.image = UIImage(systemName: "star") }
     }
 
-    public var bookInfo: BookInfo? {
+    var bookInfo: BookInfo? {
         didSet {
             configContent()
             configImage()

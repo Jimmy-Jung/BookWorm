@@ -45,7 +45,7 @@ final class NetworkManager {
     ///   - page: 현재 페이지(디폴트값: 1)
     ///   - coverSize: 이미지 사이즈(중간 크기(기본값) : 너비 85px)
     /// - Returns: Result<AladinResult, NetworkError>
-    public func fetchSearchData(
+    func fetchSearchData(
         searchTerm: String,
         resultPerPage max: Int = 20,
         page: Int = 1,
@@ -73,7 +73,7 @@ final class NetworkManager {
     ///   - page: 현재 페이지(디폴트값: 1)
     ///   - coverSize: 이미지 사이즈(중간 크기(기본값) : 너비 85px)
     /// - Returns: Result<AladinResult, NetworkError>
-    public func fetchListData(
+    func fetchListData(
         kindOfList kind: AL.KindOfList = .Bestseller,
         resultPerPage max: Int = 50,
         page: Int = 1,

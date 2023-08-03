@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AladinApi {
+enum AladinApi {
     // Sample URL: http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=[TTBKey]&QueryType=ItemNewAll&MaxResults=10&start=1&SearchTarget=Book&output=xml&Version=20131101
     
     enum Form {

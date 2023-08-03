@@ -36,6 +36,7 @@
 		551774B92A7A6A650089D911 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */; };
 		551774BA2A7A6A650089D911 /* BrowseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */; };
 		551774BD2A7A75DA0089D911 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 551774BC2A7A75DA0089D911 /* SnapKit */; };
+		559837232A7BDCEA00B35C06 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		551774B52A7A67830089D911 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseCollectionViewCell.xib; sourceTree = "<group>"; };
+		559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				551774972A7808D70089D911 /* UIViewController+Extension.swift */,
 				5517749A2A781FE30089D911 /* UIColor+Extension.swift */,
 				551774AA2A78D92A0089D911 /* Bundle+Extension.swift */,
+				559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				5517747A2A77D0210089D911 /* AladinResult.swift in Sources */,
 				551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */,
 				5517749F2A78896C0089D911 /* SearchTableViewController.swift in Sources */,
+				559837232A7BDCEA00B35C06 /* UILabel+Extension.swift in Sources */,
 				551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */,
 				551774AD2A78E0040089D911 /* FavoritesCollectionViewController.swift in Sources */,
 				551774AF2A78E9480089D911 /* UserDefault.swift in Sources */,

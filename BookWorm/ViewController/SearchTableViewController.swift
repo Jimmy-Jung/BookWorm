@@ -20,7 +20,7 @@ final class SearchTableViewController: UITableViewController {
     }
     private var networkWorkItem: DispatchWorkItem?
 
-    public var searchTerm: String? {
+    var searchTerm: String? {
         didSet {
             // 이전에 예약된 네트워크 요청을 취소합니다.
             networkWorkItem?.cancel()

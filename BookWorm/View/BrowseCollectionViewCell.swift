@@ -14,10 +14,11 @@ final class BrowseCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coverImageView: UIImageView!
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         coverImageView.image = UIImage(named: ImageString.defaultBookCover)
     }
 
-    public var bookInfo: BookInfo? {
+    var bookInfo: BookInfo? {
         didSet { configImage() }
     }
     
