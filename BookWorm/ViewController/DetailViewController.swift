@@ -8,6 +8,11 @@
 import UIKit
 import SafariServices
 
+enum presentType {
+    case full
+    case nav
+}
+
 final class DetailViewController: UIViewController {
     static let StoryBoardIdentifier = "DetailViewController"
     
@@ -20,11 +25,13 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var priceStandard: UILabel!
     @IBOutlet weak var priceSales: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    public var bookInfo: BookInfo!
+    var bookInfo: BookInfo!
+    var type: presentType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configContent()
+        makeCloseButton()
         title = "상세 설명"
     }
     @IBAction func buyButtonTapped(_ sender: UIButton) {
@@ -40,6 +47,22 @@ final class DetailViewController: UIViewController {
             let safariVC = SFSafariViewController(url: url)
             present(safariVC, animated: true)
         }
+    }
+    
+    private func makeCloseButton() {
+        switch type {
+        case .full:
+            let xmark = UIImage(systemName: "xmark")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain, target: self, action: #selector(closeButtonTapped))
+            navigationItem.leftBarButtonItem?.tintColor = .black
+        case .nav:
+            break
+        case .none:
+            break
+        }
+    }
+    @objc func closeButtonTapped() {
+        dismiss(animated: true)
     }
     private func configContent() {
         let category = bookInfo.categoryName ?? "카테고리"

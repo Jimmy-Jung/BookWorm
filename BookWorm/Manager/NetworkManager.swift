@@ -95,7 +95,6 @@ final class NetworkManager {
     
     private func performRequest(with urlString: String) async -> NetworkResult {
         do {
-            print(urlString)
             guard let url = URL(string: urlString) else {return .failure(.urlError)}
             let (data, response) = try await URLSession.shared.data(from: url)
             guard let httpResponse = response as? HTTPURLResponse,

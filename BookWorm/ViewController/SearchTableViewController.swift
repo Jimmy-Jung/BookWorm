@@ -91,18 +91,15 @@ final class SearchTableViewController: UITableViewController {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        guard let urlString = bookList[indexPath.row].link else {
-            self.showCancelAlert(
-                title: "웹페이지를 열 수 없습니다.",
-                message: "주소가 잘못되었습니다. 다시 시도해 주세요.",
-                preferredStyle: .alert
-            )
-            return
-        }
-        if let url = URL(string: urlString) {
-            let safariVC = SFSafariViewController(url: url)
-            present(safariVC, animated: true)
-        }
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(
+            withIdentifier: DetailViewController.StoryBoardIdentifier
+        ) as! DetailViewController
+        vc.bookInfo = bookList[indexPath.item]
+        vc.type = .full
+        let nv = UINavigationController(rootViewController: vc)
+        nv.modalPresentationStyle = .fullScreen
+        present(nv, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
