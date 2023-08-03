@@ -60,7 +60,9 @@ final class NetworkManager {
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
-        guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return .failure(.urlError)}
+        guard let encodedUrlString = urlString
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        else { return .failure(.urlError) }
         return await performRequest(with: encodedUrlString)
     }
     
@@ -85,7 +87,9 @@ final class NetworkManager {
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
         urlString += "&\(AladinApi.outPut(.json))"
-        guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return .failure(.urlError)}
+        guard let encodedUrlString = urlString
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        else { return .failure(.urlError) }
         return await performRequest(with: encodedUrlString)
     }
     

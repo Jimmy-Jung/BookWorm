@@ -29,7 +29,11 @@ final class DetailViewController: UIViewController {
     }
     @IBAction func buyButtonTapped(_ sender: UIButton) {
         guard let urlString = bookInfo.link else {
-            self.showCancelAlert(title: "웹페이지를 열 수 없습니다.", message: "주소가 잘못되었습니다. 다시 시도해 주세요.", preferredStyle: .alert)
+            self.showCancelAlert(
+                title: "웹페이지를 열 수 없습니다.",
+                message: "주소가 잘못되었습니다. 다시 시도해 주세요.",
+                preferredStyle: .alert
+            )
             return
         }
         if let url = URL(string: urlString) {

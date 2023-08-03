@@ -30,7 +30,10 @@ final class SearchTableViewController: UITableViewController {
                 Task { await self?.network() }
             }
             networkWorkItem = workItem
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: workItem)
+            DispatchQueue.main.asyncAfter(
+                deadline: DispatchTime.now() + 0.3,
+                execute: workItem
+            )
         }
     }
     
@@ -66,19 +69,34 @@ final class SearchTableViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: identifier)
         
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return bookList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier) as! SearchTableViewCell
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SearchTableViewCell.identifier
+        ) as! SearchTableViewCell
         cell.bookInfo = bookList[indexPath.row]
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         guard let urlString = bookList[indexPath.row].link else {
-            self.showCancelAlert(title: "웹페이지를 열 수 없습니다.", message: "주소가 잘못되었습니다. 다시 시도해 주세요.", preferredStyle: .alert)
+            self.showCancelAlert(
+                title: "웹페이지를 열 수 없습니다.",
+                message: "주소가 잘못되었습니다. 다시 시도해 주세요.",
+                preferredStyle: .alert
+            )
             return
         }
         if let url = URL(string: urlString) {

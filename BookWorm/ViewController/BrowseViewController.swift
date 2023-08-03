@@ -76,8 +76,14 @@ final class BrowseViewController: UIViewController {
     
 
     private func setupCollectionView() {
-        let collectionViewCellNib = UINib(nibName: BrowseCollectionViewCell.identifier, bundle: nil)
-        browseCollectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: BrowseCollectionViewCell.identifier)
+        let collectionViewCellNib = UINib(
+            nibName: BrowseCollectionViewCell.identifier,
+            bundle: nil
+        )
+        browseCollectionView.register(
+            collectionViewCellNib,
+            forCellWithReuseIdentifier: BrowseCollectionViewCell.identifier
+        )
         browseCollectionView.delegate = self
         browseCollectionView.dataSource = self
         collectionViewHeaderTitleLabel.text = BestBookListHeaderTitle
@@ -94,7 +100,10 @@ final class BrowseViewController: UIViewController {
     
     private func setupTableView() {
         let tableViewCellNib = UINib(nibName: SearchTableViewCell.identifier, bundle: nil)
-        browseTableView.register(tableViewCellNib, forCellReuseIdentifier: SearchTableViewCell.identifier)
+        browseTableView.register(
+            tableViewCellNib,
+            forCellReuseIdentifier: SearchTableViewCell.identifier
+        )
         browseTableView.delegate = self
         browseTableView.dataSource = self
         browseTableView.tableHeaderView?.frame.size.height = 160
@@ -107,19 +116,33 @@ final class BrowseViewController: UIViewController {
 }
 // MARK: - CollectionView
 extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return BestBookList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseCollectionViewCell.identifier, for: indexPath) as! BrowseCollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: BrowseCollectionViewCell.identifier,
+            for: indexPath
+        ) as! BrowseCollectionViewCell
         cell.bookInfo = BestBookList[indexPath.item]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: DetailViewController.StoryBoardIdentifier) as! DetailViewController
+        let vc = sb.instantiateViewController(
+            withIdentifier: DetailViewController.StoryBoardIdentifier
+        ) as! DetailViewController
         vc.bookInfo = BestBookList[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -132,15 +155,22 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
         return noteworthyBookList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier) as! SearchTableViewCell
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SearchTableViewCell.identifier
+        ) as! SearchTableViewCell
         cell.bookInfo = noteworthyBookList[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: DetailViewController.StoryBoardIdentifier) as! DetailViewController
+        let vc = sb.instantiateViewController(
+            withIdentifier: DetailViewController.StoryBoardIdentifier
+        ) as! DetailViewController
         vc.bookInfo = noteworthyBookList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
