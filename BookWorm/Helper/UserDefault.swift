@@ -41,13 +41,27 @@ struct UserDefaultCustomType<T: Codable> {
 
 struct BookDefaultManager {
     @UserDefaultCustomType(
-        key: KeyEnum.storedBookList.rawValue,
+        key: KeyEnum.favoritesBookList.rawValue,
         defaultValue: []
     )
     static var storedBookList: Set<BookInfo>
     
+    @UserDefaultCustomType(
+        key: KeyEnum.memoBookList.rawValue,
+        defaultValue: []
+    )
+    static var memoBookList: Set<BookInfo>
+    
+    @UserDefaultCustomType(
+        key: KeyEnum.visitedBookList.rawValue,
+        defaultValue: []
+    )
+    static var visitedBookList: [BookInfo]
+    
     enum KeyEnum: String {
-        case storedBookList
+        case favoritesBookList
+        case memoBookList
+        case visitedBookList
     }
 }
 

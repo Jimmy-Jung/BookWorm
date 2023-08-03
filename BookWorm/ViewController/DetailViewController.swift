@@ -37,6 +37,7 @@ final class DetailViewController: UIViewController {
         configContent()
         makeCloseButton()
         configDescription()
+        keyboardNotification()
         memoTextView.delegate = self
     }
 
@@ -100,6 +101,12 @@ final class DetailViewController: UIViewController {
         priceSales.text = makePriceString(price: priceSL)
         descriptionLabel.text = description
         
+        BookDefaultManager.memoBookList.forEach { book in
+            if book == bookInfo {
+                memoTextView.text = book.memo
+            }
+        }
+        
         configImage()
         starCollection.forEach {
             $0.image = UIImage(systemName: "star")
@@ -137,6 +144,13 @@ final class DetailViewController: UIViewController {
             coverImageView.image = UIImage(named: ImageString.defaultBookCover)
         }
     }
+    deinit {
+        if !memoTextView.text.isEmpty {
+            bookInfo.memo = memoTextView.text
+            BookDefaultManager.memoBookList.insert(bookInfo)
+            print(BookDefaultManager.memoBookList)
+        }
+    }
 
 }
 
@@ -152,5 +166,58 @@ extension DetailViewController: UITextViewDelegate {
             textView.text = placeholderText
             textView.textColor = .lightGray
         }
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+      if (text == "\n") {
+        textView.resignFirstResponder()
+      } else {
+      }
+      return true
+    }
+}
+
+extension DetailViewController {
+    /// 키보드 노티피케이션 등록
+    private func keyboardNotification() {
+        // 키보드 올라올 때 알림 등록
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        // 키보드 내려갈 때 알림 등록
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    // MARK: - @objc Method
+    /// 키보드 올라갈때 호출 메서드
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardFrame = notification
+            .userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        // 신조어 화면 높이 조정 및애니메이션 추가
+        UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25) {
+            self.view.bounds.origin.y = keyboardFrame.height - 90
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    /// 키보드 내려갈때 호출 메서드
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // 신조어 화면 높이 조정 및애니메이션 추가
+        UIView.animate(withDuration: notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0.25) {
+            self.view.bounds.origin.y = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }

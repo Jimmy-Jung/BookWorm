@@ -30,6 +30,7 @@ struct BookInfo: Codable, Hashable {
     let publisher: String?
     let customerReviewRank: Int?
     var backgroundColor: RGB?
+    var memo: String?
     
     static func == (lhs: BookInfo, rhs: BookInfo) -> Bool {
         return lhs.title == rhs.title && lhs.author == rhs.author
