@@ -8,12 +8,15 @@
 import UIKit
 import SafariServices
 
-enum presentType {
+enum PresentType {
     case full
     case nav
 }
+protocol Present {
+    func makeCloseButton()
+}
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, Present {
     static let StoryBoardIdentifier = "DetailViewController"
     
     @IBOutlet weak var coverImageView: UIImageView!
@@ -28,19 +31,38 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var memoTextView: UITextView!
     var bookInfo: BookInfo!
-    var type: presentType?
+    var type: PresentType?
     let placeholderText = "텍스트를 입력하세요."
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "상세 설명"
+        fetchMemo()
         configContent()
         makeCloseButton()
         configDescription()
         keyboardNotification()
+        visitCheck()
         memoTextView.delegate = self
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if !memoTextView.text.isEmpty {
+            bookInfo.memo = memoTextView.text
+            BookDefaultManager.memoBookList.insert(bookInfo)
+        }
+    }
+    private func fetchMemo() {
+        BookDefaultManager.memoBookList.forEach { book in
+            if book == bookInfo {
+                bookInfo.memo = book.memo
+            }
+        }
+    }
     @IBAction func moreButtonTapped(_ sender: UIButton) {
         if descriptionLabel.countCurrentLines() > 5 {
             descriptionLabel.numberOfLines = 8
@@ -62,6 +84,12 @@ final class DetailViewController: UIViewController {
             present(safariVC, animated: true)
         }
     }
+    private func visitCheck() {
+        if !BookDefaultManager.visitedBookList.contains(bookInfo) {
+            BookDefaultManager.visitedBookList.insert(bookInfo, at: 0)
+        }
+        
+    }
     private func configDescription() {
         descriptionLabel.numberOfLines = 5
         if descriptionLabel.countCurrentLines() <= 5 {
@@ -69,7 +97,7 @@ final class DetailViewController: UIViewController {
         }
         
     }
-    private func makeCloseButton() {
+    func makeCloseButton() {
         switch type {
         case .full:
             let xmark = UIImage(systemName: "xmark")
@@ -92,7 +120,7 @@ final class DetailViewController: UIViewController {
         let priceSD = bookInfo.priceStandard ?? 0
         let priceSL = bookInfo.priceSales ?? 0
         let description = bookInfo.description?.count == 0 ? "설명 없음" : (bookInfo.description ?? "설명")
-        
+        let memo = bookInfo.memo ?? placeholderText
         categoryNameLabel.text = category
         titleLabel.text = title
         authorLabel.text = autor
@@ -100,13 +128,12 @@ final class DetailViewController: UIViewController {
         priceStandard.text = makePriceString(price: priceSD) + "→"
         priceSales.text = makePriceString(price: priceSL)
         descriptionLabel.text = description
-        
-        BookDefaultManager.memoBookList.forEach { book in
-            if book == bookInfo {
-                memoTextView.text = book.memo
-            }
+        memoTextView.text = memo
+        if memo == placeholderText {
+            memoTextView.textColor = .lightGray
+        } else {
+            memoTextView.textColor = .label
         }
-        
         configImage()
         starCollection.forEach {
             $0.image = UIImage(systemName: "star")
@@ -144,13 +171,7 @@ final class DetailViewController: UIViewController {
             coverImageView.image = UIImage(named: ImageString.defaultBookCover)
         }
     }
-    deinit {
-        if !memoTextView.text.isEmpty {
-            bookInfo.memo = memoTextView.text
-            BookDefaultManager.memoBookList.insert(bookInfo)
-            print(BookDefaultManager.memoBookList)
-        }
-    }
+
 
 }
 
@@ -158,8 +179,8 @@ extension DetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == placeholderText {
             textView.text = ""
-            textView.textColor = .label
         }
+        textView.textColor = .label
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {

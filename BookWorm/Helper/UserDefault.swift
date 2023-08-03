@@ -44,7 +44,7 @@ struct BookDefaultManager {
         key: KeyEnum.favoritesBookList.rawValue,
         defaultValue: []
     )
-    static var storedBookList: Set<BookInfo>
+    static var favoritesBookList: Set<BookInfo>
     
     @UserDefaultCustomType(
         key: KeyEnum.memoBookList.rawValue,

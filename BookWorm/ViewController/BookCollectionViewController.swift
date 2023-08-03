@@ -123,11 +123,11 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
-        let isStored = BookDefaultManager.storedBookList.contains(bookList[sender.tag])
+        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
         if isStored {
-            BookDefaultManager.storedBookList.remove(bookList[sender.tag])
+            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
         } else {
-            BookDefaultManager.storedBookList.insert(bookList[sender.tag])
+            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
         }
         collectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
     }

@@ -55,7 +55,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
     
     private func compareWithUserDefaults() {
         guard let bookInfo else {return}
-        let isStored = BookDefaultManager.storedBookList.contains(bookInfo)
+        let isStored = BookDefaultManager.favoritesBookList.contains(bookInfo)
         let image = isStored ?
         UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         storeButton.setImage(image, for: .normal)

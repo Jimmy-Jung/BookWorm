@@ -16,10 +16,10 @@ final class BrowseViewController: UIViewController {
     @IBOutlet weak var browseTableView: UITableView!
     
     // MARK: - Private Properties
-    private var BestBookList: [BookInfo] = []
+    private var visitedBookList: [BookInfo] = []
     private var noteworthyBookList: [BookInfo] = []
     private let networkManager = NetworkManager.shared
-    private let BestBookListHeaderTitle = "베스트 셀러"
+    private let visitedBookListHeaderTitle = "최근 본 작품"
     private let noteworthyBookListHeaderTitle = "주목할 만한 신간"
     
     // MARK: - LifeCycle
@@ -29,28 +29,22 @@ final class BrowseViewController: UIViewController {
         setupCollectionView()
         configureCollectionView()
         setupTableView()
-        Task{
-            await fetchEditorBookList()
-            await fetchNoteworthyBookList()
-        }
+        fetchVisitedBookList()
+        Task{ await fetchNoteworthyBookList() }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        visitedBookList = BookDefaultManager.visitedBookList
+        browseCollectionView.reloadData()
     }
     
     // MARK: - Private Methods
-    private func fetchEditorBookList() async {
-        let list = await networkManager.fetchListData(kindOfList: .Bestseller)
-        
-        switch list {
-        case .success(let result):
-            guard let items = result.item else {return}
-            print(items)
-            BestBookList.append(contentsOf: items)
-        case .failure(let error):
-            BestBookList = []
-            self.showCancelAlert(
-                title: "불러오기 실패!!",
-                message: error.localizedDescription,
-                preferredStyle: .alert
-            )
+    private func fetchVisitedBookList() {
+        visitedBookList = BookDefaultManager.visitedBookList
+        if visitedBookList.count == 0 {
+            browseTableView.tableHeaderView?.frame.size.height = 0
+            browseTableView.reloadData()
         }
         browseCollectionView.reloadData()
     }
@@ -86,7 +80,7 @@ final class BrowseViewController: UIViewController {
         )
         browseCollectionView.delegate = self
         browseCollectionView.dataSource = self
-        collectionViewHeaderTitleLabel.text = BestBookListHeaderTitle
+        collectionViewHeaderTitleLabel.text = visitedBookListHeaderTitle
     }
     private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -120,7 +114,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return BestBookList.count
+        return visitedBookList.count
     }
     
     func collectionView(
@@ -131,7 +125,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
             withReuseIdentifier: BrowseCollectionViewCell.identifier,
             for: indexPath
         ) as! BrowseCollectionViewCell
-        cell.bookInfo = BestBookList[indexPath.item]
+        cell.bookInfo = visitedBookList[indexPath.item]
         return cell
     }
     
@@ -143,7 +137,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let vc = sb.instantiateViewController(
             withIdentifier: DetailViewController.StoryBoardIdentifier
         ) as! DetailViewController
-        vc.bookInfo = BestBookList[indexPath.item]
+        vc.bookInfo = visitedBookList[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }

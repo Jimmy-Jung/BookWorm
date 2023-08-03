@@ -29,7 +29,7 @@ final class FavoritesCollectionViewController: UICollectionViewController {
     }
     
     private func setBookList() {
-        let bookArray = Array(BookDefaultManager.storedBookList)
+        let bookArray = Array(BookDefaultManager.favoritesBookList)
         bookList = bookArray.sorted {
             $0.title?.first ?? "a" < $1.title?.first ?? "a"
         }
@@ -100,11 +100,11 @@ final class FavoritesCollectionViewController: UICollectionViewController {
     }
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
-        let isStored = BookDefaultManager.storedBookList.contains(bookList[sender.tag])
+        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
         if isStored {
-            BookDefaultManager.storedBookList.remove(bookList[sender.tag])
+            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
         } else {
-            BookDefaultManager.storedBookList.insert(bookList[sender.tag])
+            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
         }
         setBookList()
     }
