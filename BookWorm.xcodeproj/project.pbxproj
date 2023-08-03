@@ -158,11 +158,11 @@
 			children = (
 				551774612A77C08D0089D911 /* Main.storyboard */,
 				551774662A77C08F0089D911 /* LaunchScreen.storyboard */,
+				551774A42A7894F80089D911 /* BookCollectionReusableView.swift */,
 				5517748E2A77F7650089D911 /* BookCollectionViewCell.swift */,
 				5517748F2A77F7650089D911 /* BookCollectionViewCell.xib */,
 				551774A02A7889DD0089D911 /* SearchTableViewCell.swift */,
 				551774A12A7889DD0089D911 /* SearchTableViewCell.xib */,
-				551774A42A7894F80089D911 /* BookCollectionReusableView.swift */,
 				551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */,
 				551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */,
 			);
