@@ -10,12 +10,13 @@ import UIKit
 final class BookCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "BookCollectionViewController"
     private let cellIdentifier = BookCollectionViewCell.identifier
-    private let sectionHeaderTitle = "베스트 셀러"
+    private let navTitle = "책 검색(Prefetch)"
+    private let sectionHeaderTitle = "베스트 셀러(ScrollView Offset)"
     
     private var bookList: [BookInfo] = []
     private let networkManager = NetworkManager.shared
     private var cellSize: CGFloat = 0
-//    private var pageCount: Int = 0
+    private var page: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,17 +45,18 @@ final class BookCollectionViewController: UICollectionViewController {
         searchController.searchBar.placeholder = "책 제목 또는 저자를 입력하세요."
         searchController.hidesNavigationBarDuringPresentation = false
         self.navigationItem.searchController = searchController
-        self.navigationItem.title = "책 검색"
+        self.navigationItem.title = navTitle
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func fetchBookList() async {
-        let list = await networkManager.fetchListData()
+        let list = await networkManager.fetchListData(resultPerPage: 12, page: page)
         
         switch list {
         case .success(let result):
             guard let items = result.item else {return}
             let coloredItems = makeRGB(items)
+            self.page += 1
             bookList.append(contentsOf: coloredItems)
         case .failure(let error):
             bookList = []
@@ -158,12 +160,12 @@ final class BookCollectionViewController: UICollectionViewController {
         return sectionHeader
     }
     
-    /// 스크롤 끝에 닿으면 API  요청
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if self.collectionView.contentOffset.y > collectionView.contentSize.height - collectionView.bounds.size.height {
-//            Task{ await fetchBookList() }
-//        }
-//    }
+    // 스크롤 끝에 닿으면 API  요청
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > collectionView.contentSize.height - collectionView.bounds.size.height {
+            Task{ await fetchBookList() }
+        }
+    }
 }
 
 extension BookCollectionViewController: UICollectionViewDelegateFlowLayout {
