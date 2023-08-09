@@ -8,9 +8,9 @@
 import UIKit
 import SafariServices
 
-final class SearchTableViewController: UITableViewController {
-    static let StoryBoardIdentifier = "SearchTableViewController"
+final class SearchTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
+    static let StoryBoardIdentifier = "SearchTableViewController"
     private var bookList: [BookInfo] = []
     private let networkManager = NetworkManager.shared
     
@@ -19,7 +19,7 @@ final class SearchTableViewController: UITableViewController {
         setupTableView()
     }
     private var networkWorkItem: DispatchWorkItem?
-
+    var page = 1
     var searchTerm: String? {
         didSet {
             // 이전에 예약된 네트워크 요청을 취소합니다.
@@ -37,15 +37,18 @@ final class SearchTableViewController: UITableViewController {
         }
     }
     
-    private func network() async {
+    private func network(prefetch: Bool = false) async {
         guard let term = searchTerm else { return }
-        // 네트워킹 전에 배열 비우기
-        bookList = []
-        let list = await networkManager.fetchSearchData(searchTerm: term)
+        let list = await networkManager.fetchSearchData(searchTerm: term, resultPerPage: 10 ,page: page)
         switch list {
         case .success(let result):
             guard let items = result.item else {return}
-            bookList = items
+            if prefetch {
+                bookList += items
+                self.page += 1
+            } else {
+                bookList = items
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -63,23 +66,18 @@ final class SearchTableViewController: UITableViewController {
     }
     
     private func setupTableView() {
+        tableView.prefetchDataSource = self
         tableView.rowHeight = 135
         let identifier = SearchTableViewCell.identifier
         let nib = UINib(nibName: identifier , bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: identifier)
         
     }
-    override func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookList.count
     }
     
-    override func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: SearchTableViewCell.identifier
         ) as! SearchTableViewCell
@@ -87,10 +85,7 @@ final class SearchTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
             withIdentifier: DetailViewController.StoryBoardIdentifier
@@ -103,4 +98,22 @@ final class SearchTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if bookList.count - 1 == indexPath.row {
+                // 이전에 예약된 네트워크 요청을 취소합니다.
+                networkWorkItem?.cancel()
+                
+                // 지연 후 새로운 네트워크 요청을 예약합니다.
+                let workItem = DispatchWorkItem { [weak self] in
+                    Task { await self?.network(prefetch: true) }
+                }
+                networkWorkItem = workItem
+                DispatchQueue.main.asyncAfter(
+                    deadline: DispatchTime.now() + 0.5,
+                    execute: workItem
+                )
+            }
+        }
+    }
 }

@@ -10,6 +10,7 @@ import UIKit
 final class BookCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "BookCollectionViewController"
     private let cellIdentifier = BookCollectionViewCell.identifier
+    private let sectionHeaderTitle = "베스트 셀러"
     
     private var bookList: [BookInfo] = []
     private let networkManager = NetworkManager.shared
@@ -153,7 +154,7 @@ final class BookCollectionViewController: UICollectionViewController {
             ofKind: kind, withReuseIdentifier: BookCollectionReusableView.identifier,
             for: indexPath
         ) as! BookCollectionReusableView
-        sectionHeader.sectionHeaderViewLabel.text = "Best Seller"
+        sectionHeader.sectionHeaderViewLabel.text = sectionHeaderTitle
         return sectionHeader
     }
     
@@ -184,6 +185,6 @@ extension BookCollectionViewController: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text,
                 !text.isEmpty else {return}
         vc.searchTerm = text
+        vc.page = 1
     }
 }
-

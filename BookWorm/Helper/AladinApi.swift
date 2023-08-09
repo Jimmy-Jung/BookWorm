@@ -57,7 +57,7 @@ enum AladinApi {
     static let apiKey = Bundle.main.Aladin_Api_Key
     /// 표시할 페이지
     /// - Parameter num: 1000 / resultPerPage 만큼 가능
-    static func Page(_ num: Int) -> String { return "start=\(num)" }
+    static func page(_ num: Int) -> String { return "start=\(num)" }
     /// 검색결과 한 페이지당 갯수 최대 출력 개수 총 1000개 결과값
     /// - Parameter num: 1~50
     static func resultPerPage(_ num: Int) -> String { return "maxResults=\(num)" }

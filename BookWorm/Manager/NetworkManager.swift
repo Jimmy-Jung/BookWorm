@@ -38,7 +38,7 @@ final class NetworkManager {
     typealias AS = AladinApi.Search
     typealias AL = AladinApi.List
     
-    /// <#Description#>
+    /// 검색하기
     /// - Parameters:
     ///   - searchTerm: 검색어
     ///   - max: 페이지 당 갯수(디폴트값: 20개)
@@ -55,7 +55,7 @@ final class NetworkManager {
         urlString += "&Query=\(searchTerm)"
         urlString += "&\(AS.Keyword)"
         urlString += "&\(AladinApi.resultPerPage(max))"
-        urlString += "&\(AladinApi.Page(page))"
+        urlString += "&\(AladinApi.page(page))"
         urlString += "&\(AladinApi.version)"
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
@@ -82,7 +82,7 @@ final class NetworkManager {
         var urlString = "\(AL.listRequestURL)"
         urlString += "&\(kind.rawValue)"
         urlString += "&\(AladinApi.resultPerPage(max))"
-        urlString += "&\(AladinApi.Page(page))"
+        urlString += "&\(AladinApi.page(page))"
         urlString += "&\(AladinApi.version)"
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
