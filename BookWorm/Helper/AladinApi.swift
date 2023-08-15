@@ -6,15 +6,9 @@
 //
 
 import Foundation
-
+// Sample URL: http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=[TTBKey]&QueryType=ItemNewAll&MaxResults=10&start=1&SearchTarget=Book&output=xml&Version=20131101
 enum AladinApi {
-    // Sample URL: http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=[TTBKey]&QueryType=ItemNewAll&MaxResults=10&start=1&SearchTarget=Book&output=xml&Version=20131101
-    
-    enum Form {
-        case xml
-        case json
-    }
-    
+
     enum Search {
         /// Search
         static let searchRequestURL = "https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?"
@@ -38,6 +32,7 @@ enum AladinApi {
             case BlogBest = "QueryType=BlogBest"
         }
     }
+    
     /// 썸네일 사이즈
     enum CoverSize: String {
         /// 큰 크기 : 너비 200px
@@ -61,15 +56,7 @@ enum AladinApi {
     /// 검색결과 한 페이지당 갯수 최대 출력 개수 총 1000개 결과값
     /// - Parameter num: 1~50
     static func resultPerPage(_ num: Int) -> String { return "maxResults=\(num)" }
-    /// 출력 형식
-    /// - Parameter form: xml or json
-    /// - Returns: "output=형식"
-    static func outPut(_ form: Form) -> String {
-        switch form {
-        case .xml: return "output=xml"
-        case .json: return "output=js"
-        }
-    }
+
     /// 검색 Api 버전(기본값: 20070901)
     static let version = "Version=20131101"
 

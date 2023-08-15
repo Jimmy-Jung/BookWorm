@@ -33,8 +33,6 @@ extension UILabel {
         )
         
         // 총 Height에서 한 줄의 Line Height를 나누면 현재 총 Line 수
-//        print(Int(ceil(labelTextSize.height)), Int(ceil(font.lineHeight)))
         return Int(ceil(labelTextSize.height / font.lineHeight)) - 1
     }
-    
 }
