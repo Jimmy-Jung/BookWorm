@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class AladinBook: Object {
+class RealmBookInfo: Object {
     
     @Persisted var title: String?
     @Persisted var link: String?
@@ -22,8 +22,8 @@ class AladinBook: Object {
     @Persisted var customerReviewRank: Int?
     @Persisted var memo: String?
     
-    internal init(title: String? = nil, link: String? = nil, author: String? = nil, description_: String? = nil, priceSales: Int? = nil, priceStandard: Int? = nil, cover: String? = nil, categoryName: String? = nil, publisher: String? = nil, customerReviewRank: Int? = nil, memo: String? = nil) {
-        super.init()
+    convenience init(title: String? = nil, link: String? = nil, author: String? = nil, description_: String? = nil, priceSales: Int? = nil, priceStandard: Int? = nil, cover: String? = nil, categoryName: String? = nil, publisher: String? = nil, customerReviewRank: Int? = nil, memo: String? = nil) {
+        self.init()
         self.title = title
         self.link = link
         self.author = author

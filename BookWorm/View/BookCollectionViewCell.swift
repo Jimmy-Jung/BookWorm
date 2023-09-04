@@ -55,10 +55,12 @@ final class BookCollectionViewCell: UICollectionViewCell {
     }
     
     private func compareWithUserDefaults() {
-        let realm = try! Realm()
-        let task = realm.objects(AladinBook.self)
-        guard let bookInfo else {return}
-        let isStored = BookDefaultManager.favoritesBookList.contains(bookInfo)
+        guard let bookInfo else { return }
+        let realm = RealmManager.createRealm(path: .favoritesBookList)
+        let realmBookInfo = realm.objects(RealmBookInfo.self)
+        let isStored = realmBookInfo.where { query in
+            query.title == bookInfo.title && query.author == bookInfo.author
+        }.count != 0
         let image = isStored ?
         UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         storeButton.setImage(image, for: .normal)

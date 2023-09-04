@@ -128,29 +128,22 @@ final class BookCollectionViewController: UICollectionViewController {
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
         let bookInfo = bookList[sender.tag]
-        let realm = try! Realm()
-        let task = AladinBook(
-            title: bookInfo.title,
-            link: bookInfo.link,
-            author: bookInfo.author,
-            description_: bookInfo.description,
-            priceSales: bookInfo.priceSales,
-            priceStandard: bookInfo.priceStandard,
-            cover: bookInfo.cover,
-            categoryName: bookInfo.categoryName,
-            publisher: bookInfo.publisher,
-            customerReviewRank: bookInfo.customerReviewRank,
-            memo: bookInfo.memo
-        )
-//        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
-//        if isStored {
-//            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
-//        } else {
-////            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
+        let task = bookInfo.convertToRealm()
+        let realm = RealmManager.createRealm(path: .favoritesBookList)
+        let realmBookInfo = realm.objects(RealmBookInfo.self)
+        let isStored = realmBookInfo.where { query in
+            query.title == bookInfo.title && query.author == bookInfo.author
+        }.count != 0
+        
+        if isStored {
+            try! realm.write {
+                realm.delete(realmBookInfo)
+            }
+        } else {
             try! realm.write {
                 realm.add(task)
             }
-//        }
+        }
         collectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
     }
     

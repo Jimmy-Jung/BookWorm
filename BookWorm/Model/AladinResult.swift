@@ -50,3 +50,37 @@ struct BookInfo: Codable, Hashable {
         }
     }
 }
+
+
+extension BookInfo {
+    init(from realm: RealmBookInfo) {
+        title = realm.title
+        link = realm.link
+        author = realm.author
+        description = realm.description
+        priceSales = realm.priceSales
+        priceStandard = realm.priceStandard
+        cover = realm.cover
+        categoryName = realm.categoryName
+        publisher = realm.publisher
+        customerReviewRank = realm.customerReviewRank
+        backgroundColor = RGB()
+        memo = realm.memo
+    }
+    
+    func convertToRealm() -> RealmBookInfo {
+        return RealmBookInfo(
+            title: title,
+            link: link,
+            author: author,
+            description_: description,
+            priceSales: priceSales,
+            priceStandard: priceStandard,
+            cover: cover,
+            categoryName: categoryName,
+            publisher: publisher,
+            customerReviewRank: customerReviewRank,
+            memo: memo
+        )
+    }
+}

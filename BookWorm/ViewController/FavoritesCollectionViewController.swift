@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 final class FavoritesCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "FavoritesCollectionViewController"
     private let cellIdentifier = BookCollectionViewCell.identifier
     
-    private var bookList: [BookInfo] = []
+    private var bookList: Results<RealmBookInfo>!
     private var cellSize: CGFloat = 0
     
     
@@ -20,21 +20,24 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         setupCollectionView()
         configCollectionView()
-        setBookList()
-        
+        getBookList()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setBookList()
-    }
-    
-    private func setBookList() {
-        let bookArray = Array(BookDefaultManager.favoritesBookList)
-        bookList = bookArray.sorted {
-            $0.title?.first ?? "a" < $1.title?.first ?? "a"
-        }
         collectionView.reloadData()
     }
+    private func getBookList() {
+        let realm = RealmManager.createRealm(path: .favoritesBookList)
+        bookList = realm.objects(RealmBookInfo.self).sorted(byKeyPath: "title", ascending: true)
+        
+    }
+//    private func setBookList() {
+//        let bookArray = Array(BookDefaultManager.favoritesBookList)
+//        bookList = bookArray.sorted {
+//            $0.title?.first ?? "a" < $1.title?.first ?? "a"
+//        }
+//        collectionView.reloadData()
+//    }
     
     private func setupCollectionView() {
         let nib = UINib(nibName: cellIdentifier, bundle: nil)
@@ -75,7 +78,7 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: cellIdentifier, for: indexPath
         ) as! BookCollectionViewCell
-        cell.bookInfo = bookList[indexPath.item]
+        cell.bookInfo = BookInfo.init(from: bookList[indexPath.item])
         cell.size = cellSize
         cell.storeButton.tag = indexPath.item
         cell.storeButton.addTarget(
@@ -94,18 +97,19 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         let vc = sb.instantiateViewController(
             withIdentifier: DetailViewController.StoryBoardIdentifier
         ) as! DetailViewController
-        vc.bookInfo = bookList[indexPath.item]
+        vc.bookInfo = BookInfo.init(from: bookList[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
-        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
-        if isStored {
-            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
-        } else {
-            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
+        let task = bookList[sender.tag]
+        let realm = RealmManager.createRealm(path: .favoritesBookList)
+        let realmBookInfo = realm.objects(RealmBookInfo.self)
+        try! realm.write {
+            realm.delete(task)
         }
-        setBookList()
+        
+        collectionView.reloadData()
     }
 }
