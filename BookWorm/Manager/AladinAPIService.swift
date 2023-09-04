@@ -30,8 +30,8 @@ enum NetworkError: Error {
     }
 }
 
-final class NetworkManager {
-    static let shared = NetworkManager()
+final class AladinAPIService {
+    static let shared = AladinAPIService()
     private init() {}
     
     typealias NetworkResult = Result<AladinResult, NetworkError>
@@ -85,6 +85,7 @@ final class NetworkManager {
         urlString += "&\(AladinApi.version)"
         urlString += "&\(coverSize.rawValue)"
         urlString += "&\(AladinApi.apiKey)"
+        urlString += "&\(AladinApi.outPut(.json))"
         guard let encodedUrlString = urlString
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         else { return .failure(.urlError) }

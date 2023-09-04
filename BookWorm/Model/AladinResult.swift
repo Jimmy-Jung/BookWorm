@@ -32,9 +32,6 @@ struct BookInfo: Codable, Hashable {
     var backgroundColor: RGB?
     var memo: String?
     
-    static func == (lhs: BookInfo, rhs: BookInfo) -> Bool {
-        return lhs.title == rhs.title && lhs.author == rhs.author
-    }
     func getRGB() -> UIColor {
         guard let BG = backgroundColor else {return UIColor.black}
         

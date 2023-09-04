@@ -56,7 +56,7 @@ struct BookDefaultManager {
         key: KeyEnum.visitedBookList.rawValue,
         defaultValue: []
     )
-    static var visitedBookList: [BookInfo]
+    static var visitedBookList: Set<BookInfo>
     
     enum KeyEnum: String {
         case favoritesBookList

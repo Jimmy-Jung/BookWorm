@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class BookCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "BookCollectionViewController"
@@ -14,7 +15,7 @@ final class BookCollectionViewController: UICollectionViewController {
     private let sectionHeaderTitle = "베스트 셀러(ScrollView Offset)"
     
     private var bookList: [BookInfo] = []
-    private let networkManager = NetworkManager.shared
+    private let networkManager = AladinAPIService.shared
     private var cellSize: CGFloat = 0
     private var page: Int = 1
     
@@ -126,12 +127,30 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
-        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
-        if isStored {
-            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
-        } else {
-            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
-        }
+        let bookInfo = bookList[sender.tag]
+        let realm = try! Realm()
+        let task = AladinBook(
+            title: bookInfo.title,
+            link: bookInfo.link,
+            author: bookInfo.author,
+            description_: bookInfo.description,
+            priceSales: bookInfo.priceSales,
+            priceStandard: bookInfo.priceStandard,
+            cover: bookInfo.cover,
+            categoryName: bookInfo.categoryName,
+            publisher: bookInfo.publisher,
+            customerReviewRank: bookInfo.customerReviewRank,
+            memo: bookInfo.memo
+        )
+//        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
+//        if isStored {
+//            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
+//        } else {
+////            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
+            try! realm.write {
+                realm.add(task)
+            }
+//        }
         collectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
     }
     

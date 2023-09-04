@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 final class BookCollectionViewCell: UICollectionViewCell {
     static let identifier = "BookCollectionViewCell"
@@ -54,6 +55,8 @@ final class BookCollectionViewCell: UICollectionViewCell {
     }
     
     private func compareWithUserDefaults() {
+        let realm = try! Realm()
+        let task = realm.objects(AladinBook.self)
         guard let bookInfo else {return}
         let isStored = BookDefaultManager.favoritesBookList.contains(bookInfo)
         let image = isStored ?
