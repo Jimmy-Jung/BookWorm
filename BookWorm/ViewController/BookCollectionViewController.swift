@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class BookCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "BookCollectionViewController"
@@ -14,7 +15,7 @@ final class BookCollectionViewController: UICollectionViewController {
     private let sectionHeaderTitle = "베스트 셀러(ScrollView Offset)"
     
     private var bookList: [BookInfo] = []
-    private let networkManager = NetworkManager.shared
+    private let networkManager = AladinAPIService.shared
     private var cellSize: CGFloat = 0
     private var page: Int = 1
     
@@ -126,11 +127,22 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
-        let isStored = BookDefaultManager.favoritesBookList.contains(bookList[sender.tag])
+        let bookInfo = bookList[sender.tag]
+        let task = bookInfo.convertToRealm()
+        let realm = RealmManager.createRealm(path: .favoritesBookList)
+        let realmBookInfo = realm.objects(RealmBookInfo.self)
+        let isStored = realmBookInfo.where { query in
+            query.title == bookInfo.title && query.author == bookInfo.author
+        }.count != 0
+        
         if isStored {
-            BookDefaultManager.favoritesBookList.remove(bookList[sender.tag])
+            try! realm.write {
+                realm.delete(realmBookInfo)
+            }
         } else {
-            BookDefaultManager.favoritesBookList.insert(bookList[sender.tag])
+            try! realm.write {
+                realm.add(task)
+            }
         }
         collectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
     }

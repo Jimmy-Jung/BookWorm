@@ -13,7 +13,7 @@
 		551774632A77C08D0089D911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551774612A77C08D0089D911 /* Main.storyboard */; };
 		551774652A77C08F0089D911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551774642A77C08F0089D911 /* Assets.xcassets */; };
 		551774682A77C08F0089D911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551774662A77C08F0089D911 /* LaunchScreen.storyboard */; };
-		551774762A77C1560089D911 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774752A77C1560089D911 /* NetworkManager.swift */; };
+		551774762A77C1560089D911 /* AladinAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774752A77C1560089D911 /* AladinAPIService.swift */; };
 		551774782A77C2690089D911 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774772A77C2690089D911 /* Constants.swift */; };
 		5517747A2A77D0210089D911 /* AladinResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774792A77D0210089D911 /* AladinResult.swift */; };
 		551774862A77EA3D0089D911 /* BookWormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551774852A77EA3D0089D911 /* BookWormTests.swift */; };
@@ -37,6 +37,10 @@
 		551774BA2A7A6A650089D911 /* BrowseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */; };
 		551774BD2A7A75DA0089D911 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 551774BC2A7A75DA0089D911 /* SnapKit */; };
 		559837232A7BDCEA00B35C06 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */; };
+		55A6D9FA2AA5E0810064ED53 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 55A6D9F92AA5E0810064ED53 /* Realm */; };
+		55A6D9FC2AA5E0810064ED53 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55A6D9FB2AA5E0810064ED53 /* RealmSwift */; };
+		55A6D9FE2AA5E96D0064ED53 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6D9FD2AA5E96D0064ED53 /* RealmData.swift */; };
+		55A6DA002AA619830064ED53 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6D9FF2AA619830064ED53 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +62,7 @@
 		551774642A77C08F0089D911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551774672A77C08F0089D911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		551774692A77C08F0089D911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		551774752A77C1560089D911 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		551774752A77C1560089D911 /* AladinAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinAPIService.swift; sourceTree = "<group>"; };
 		551774772A77C2690089D911 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		551774792A77D0210089D911 /* AladinResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinResult.swift; sourceTree = "<group>"; };
 		551774832A77EA3D0089D911 /* BookWormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookWormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,8 @@
 		551774B72A7A6A650089D911 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		551774B82A7A6A650089D911 /* BrowseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseCollectionViewCell.xib; sourceTree = "<group>"; };
 		559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		55A6D9FD2AA5E96D0064ED53 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
+		55A6D9FF2AA619830064ED53 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A6D9FC2AA5E0810064ED53 /* RealmSwift in Frameworks */,
+				55A6D9FA2AA5E0810064ED53 /* Realm in Frameworks */,
 				551774942A77FFF90089D911 /* Kingfisher in Frameworks */,
 				551774BD2A7A75DA0089D911 /* SnapKit in Frameworks */,
 			);
@@ -142,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				551774792A77D0210089D911 /* AladinResult.swift */,
+				55A6D9FD2AA5E96D0064ED53 /* RealmData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,7 +205,8 @@
 		551774742A77C0CC0089D911 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				551774752A77C1560089D911 /* NetworkManager.swift */,
+				55A6D9FF2AA619830064ED53 /* RealmManager.swift */,
+				551774752A77C1560089D911 /* AladinAPIService.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -239,6 +249,8 @@
 			packageProductDependencies = (
 				551774932A77FFF90089D911 /* Kingfisher */,
 				551774BC2A7A75DA0089D911 /* SnapKit */,
+				55A6D9F92AA5E0810064ED53 /* Realm */,
+				55A6D9FB2AA5E0810064ED53 /* RealmSwift */,
 			);
 			productName = BookWorm;
 			productReference = 551774582A77C08D0089D911 /* BookWorm.app */;
@@ -295,6 +307,7 @@
 				551774BB2A7A75DA0089D911 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				553DBB572A83A362000ACEFA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				553DBB5A2A83A376000ACEFA /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				55A6D9F82AA5E0810064ED53 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 551774592A77C08D0089D911 /* Products */;
 			projectDirPath = "";
@@ -339,14 +352,16 @@
 				551774AB2A78D92A0089D911 /* Bundle+Extension.swift in Sources */,
 				5517749D2A7829550089D911 /* DetailViewController.swift in Sources */,
 				551774982A7808D70089D911 /* UIViewController+Extension.swift in Sources */,
+				55A6D9FE2AA5E96D0064ED53 /* RealmData.swift in Sources */,
 				551774782A77C2690089D911 /* Constants.swift in Sources */,
 				551774B92A7A6A650089D911 /* BrowseCollectionViewCell.swift in Sources */,
-				551774762A77C1560089D911 /* NetworkManager.swift in Sources */,
+				551774762A77C1560089D911 /* AladinAPIService.swift in Sources */,
 				551774B62A7A67830089D911 /* BrowseViewController.swift in Sources */,
 				551774602A77C08D0089D911 /* BookCollectionViewController.swift in Sources */,
 				5517747A2A77D0210089D911 /* AladinResult.swift in Sources */,
 				551774902A77F7650089D911 /* BookCollectionViewCell.swift in Sources */,
 				5517749F2A78896C0089D911 /* SearchTableViewController.swift in Sources */,
+				55A6DA002AA619830064ED53 /* RealmManager.swift in Sources */,
 				559837232A7BDCEA00B35C06 /* UILabel+Extension.swift in Sources */,
 				551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */,
 				551774AD2A78E0040089D911 /* FavoritesCollectionViewController.swift in Sources */,
@@ -675,6 +690,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		55A6D9F82AA5E0810064ED53 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -687,6 +710,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 551774BB2A7A75DA0089D911 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		55A6D9F92AA5E0810064ED53 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55A6D9F82AA5E0810064ED53 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		55A6D9FB2AA5E0810064ED53 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55A6D9F82AA5E0810064ED53 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

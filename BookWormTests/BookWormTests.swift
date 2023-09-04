@@ -10,11 +10,11 @@ import XCTest
 
 final class BookWormTests: XCTestCase {
     
-    var sut: NetworkManager!
+    var sut: AladinAPIService!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = NetworkManager.shared
+        sut = AladinAPIService.shared
     }
     
     override func tearDownWithError() throws {

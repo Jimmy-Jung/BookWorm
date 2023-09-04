@@ -18,7 +18,7 @@ final class BrowseViewController: UIViewController {
     // MARK: - Private Properties
     private var visitedBookList: [BookInfo] = []
     private var noteworthyBookList: [BookInfo] = []
-    private let networkManager = NetworkManager.shared
+    private let networkManager = AladinAPIService.shared
     private let visitedBookListHeaderTitle = "최근 본 작품"
     private let noteworthyBookListHeaderTitle = "주목할 만한 신간"
     

@@ -12,7 +12,7 @@ final class SearchTableViewController: UITableViewController, UITableViewDataSou
     
     static let StoryBoardIdentifier = "SearchTableViewController"
     private var bookList: [BookInfo] = []
-    private let networkManager = NetworkManager.shared
+    private let networkManager = AladinAPIService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

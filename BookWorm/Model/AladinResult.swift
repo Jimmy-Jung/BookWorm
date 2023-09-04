@@ -32,9 +32,6 @@ struct BookInfo: Codable, Hashable {
     var backgroundColor: RGB?
     var memo: String?
     
-    static func == (lhs: BookInfo, rhs: BookInfo) -> Bool {
-        return lhs.title == rhs.title && lhs.author == rhs.author
-    }
     func getRGB() -> UIColor {
         guard let BG = backgroundColor else {return UIColor.black}
         
@@ -51,5 +48,39 @@ struct BookInfo: Codable, Hashable {
             self.green = CGFloat.random(in: 0.5...0.9)
             self.blue = CGFloat.random(in: 0.5...0.9)
         }
+    }
+}
+
+
+extension BookInfo {
+    init(from realm: RealmBookInfo) {
+        title = realm.title
+        link = realm.link
+        author = realm.author
+        description = realm.description
+        priceSales = realm.priceSales
+        priceStandard = realm.priceStandard
+        cover = realm.cover
+        categoryName = realm.categoryName
+        publisher = realm.publisher
+        customerReviewRank = realm.customerReviewRank
+        backgroundColor = RGB()
+        memo = realm.memo
+    }
+    
+    func convertToRealm() -> RealmBookInfo {
+        return RealmBookInfo(
+            title: title,
+            link: link,
+            author: author,
+            description_: description,
+            priceSales: priceSales,
+            priceStandard: priceStandard,
+            cover: cover,
+            categoryName: categoryName,
+            publisher: publisher,
+            customerReviewRank: customerReviewRank,
+            memo: memo
+        )
     }
 }
