@@ -1,5 +1,8 @@
 # BookWorm
 
+# SeSAC 9월5일(월) 과제
+
+![Simulator Screen Recording - iPhone 14 - 2023-09-05 at 01 13 45](https://github.com/Jimmy-Jung/BookWorm/assets/115251866/b56b7354-4e63-47ee-86f6-14eb0de56622)
 
 # SeSAC 7월31일(월) 과제
 
