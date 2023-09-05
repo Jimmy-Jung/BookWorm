@@ -11,10 +11,9 @@ import RealmSwift
 final class FavoritesCollectionViewController: UICollectionViewController {
     static let storyBoardIdentifier = "FavoritesCollectionViewController"
     private let cellIdentifier = BookCollectionViewCell.identifier
-    
     private var bookList: Results<RealmBookInfo>!
     private var cellSize: CGFloat = 0
-    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +26,11 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     private func getBookList() {
-        let realm = RealmManager.createRealm(path: .favoritesBookList)
-        bookList = realm.objects(RealmBookInfo.self).sorted(byKeyPath: "title", ascending: true)
+        bookList = realm.objects(RealmBookInfo.self).where({
+            $0.favorite == true
+        }).sorted(byKeyPath: "title", ascending: true)
         
     }
-//    private func setBookList() {
-//        let bookArray = Array(BookDefaultManager.favoritesBookList)
-//        bookList = bookArray.sorted {
-//            $0.title?.first ?? "a" < $1.title?.first ?? "a"
-//        }
-//        collectionView.reloadData()
-//    }
     
     private func setupCollectionView() {
         let nib = UINib(nibName: cellIdentifier, bundle: nil)
@@ -93,23 +86,21 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
             withIdentifier: DetailViewController.StoryBoardIdentifier
         ) as! DetailViewController
         vc.bookInfo = BookInfo.init(from: bookList[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
-        collectionView.deselectItem(at: indexPath, animated: true)
+        
     }
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
         let task = bookList[sender.tag]
-        let realm = RealmManager.createRealm(path: .favoritesBookList)
-        let realmBookInfo = realm.objects(RealmBookInfo.self)
         try! realm.write {
             realm.delete(task)
         }
-        
-        collectionView.reloadData()
+        collectionView.deleteItems(at: [IndexPath(item: sender.tag, section: 0)])
     }
 }

@@ -29,8 +29,15 @@ struct BookInfo: Codable, Hashable {
     let categoryName: String?
     let publisher: String?
     let customerReviewRank: Int?
+    let itemId: Int?
     var backgroundColor: RGB?
+    var favorite: Bool? = false
+    var visited: Bool? = false
     var memo: String?
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+            return lhs.itemId == rhs.itemId
+        }
     
     func getRGB() -> UIColor {
         guard let BG = backgroundColor else {return UIColor.black}
@@ -57,14 +64,17 @@ extension BookInfo {
         title = realm.title
         link = realm.link
         author = realm.author
-        description = realm.description
+        description = realm.description_
         priceSales = realm.priceSales
         priceStandard = realm.priceStandard
         cover = realm.cover
         categoryName = realm.categoryName
         publisher = realm.publisher
         customerReviewRank = realm.customerReviewRank
+        itemId = realm.itemId
         backgroundColor = RGB()
+        visited = realm.visited
+        favorite = realm.favorite
         memo = realm.memo
     }
     
@@ -80,6 +90,9 @@ extension BookInfo {
             categoryName: categoryName,
             publisher: publisher,
             customerReviewRank: customerReviewRank,
+            itemId: itemId,
+            favorite: favorite,
+            visited: visited,
             memo: memo
         )
     }

@@ -41,6 +41,7 @@
 		55A6D9FC2AA5E0810064ED53 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 55A6D9FB2AA5E0810064ED53 /* RealmSwift */; };
 		55A6D9FE2AA5E96D0064ED53 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6D9FD2AA5E96D0064ED53 /* RealmData.swift */; };
 		55A6DA002AA619830064ED53 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6D9FF2AA619830064ED53 /* RealmManager.swift */; };
+		55A7A9072AA757C400947AAB /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A7A9062AA757C400947AAB /* FileManager+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		55A6D9FD2AA5E96D0064ED53 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		55A6D9FF2AA619830064ED53 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		55A7A9062AA757C400947AAB /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				5517749A2A781FE30089D911 /* UIColor+Extension.swift */,
 				551774AA2A78D92A0089D911 /* Bundle+Extension.swift */,
 				559837222A7BDCEA00B35C06 /* UILabel+Extension.swift */,
+				55A7A9062AA757C400947AAB /* FileManager+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				55A6DA002AA619830064ED53 /* RealmManager.swift in Sources */,
 				559837232A7BDCEA00B35C06 /* UILabel+Extension.swift in Sources */,
 				551774A22A7889DD0089D911 /* SearchTableViewCell.swift in Sources */,
+				55A7A9072AA757C400947AAB /* FileManager+Extension.swift in Sources */,
 				551774AD2A78E0040089D911 /* FavoritesCollectionViewController.swift in Sources */,
 				551774AF2A78E9480089D911 /* UserDefault.swift in Sources */,
 				551774962A7805BC0089D911 /* AladinApi.swift in Sources */,
