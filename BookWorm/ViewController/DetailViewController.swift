@@ -52,7 +52,7 @@ final class DetailViewController: UIViewController, Present {
         visitCheck()
         memoTextView.delegate = self
     }
-
+    
     @IBAction func moreButtonTapped(_ sender: UIButton) {
         if descriptionLabel.countCurrentLines() > 5 {
             descriptionLabel.numberOfLines = 8
@@ -78,9 +78,9 @@ final class DetailViewController: UIViewController, Present {
     /// 방문 체크 및 체크인
     private func visitCheck() {
         if let realmBookInfo {
-                try! realm.write {
-                    realmBookInfo.visited = true
-                }
+            try! realm.write {
+                realmBookInfo.visited = true
+            }
             
         } else {
             let realmBookInfo = bookInfo.convertToRealm()
@@ -117,12 +117,17 @@ final class DetailViewController: UIViewController, Present {
     }
     
     @objc func saveButtonTapped() {
-        guard let realmBookInfo else { return }
-        try! realm.write {
-            realmBookInfo.memo = memoTextView.text
+        if let realmBookInfo {
+            try! realm.write {
+                realmBookInfo.memo = memoTextView.text
+            }
+        } else {
+            let realmBookInfo = bookInfo.convertToRealm()
+            try! realm.write {
+                realm.add(realmBookInfo)
+            }
         }
         navigationController?.popViewController(animated: true)
-        print("pop")
     }
     
     private func configContent() {
@@ -184,8 +189,8 @@ final class DetailViewController: UIViewController, Present {
             coverImageView.image = UIImage(named: ImageString.defaultBookCover)
         }
     }
-
-
+    
+    
 }
 
 extension DetailViewController: UITextViewDelegate {
@@ -201,13 +206,13 @@ extension DetailViewController: UITextViewDelegate {
             textView.textColor = .lightGray
         }
     }
-
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-      if (text == "\n") {
-        textView.resignFirstResponder()
-      } else {
-      }
-      return true
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        } else {
+        }
+        return true
     }
 }
 
