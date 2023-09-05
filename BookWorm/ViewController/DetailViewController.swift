@@ -124,6 +124,7 @@ final class DetailViewController: UIViewController, Present {
         } else {
             let realmBookInfo = bookInfo.convertToRealm()
             try! realm.write {
+                realmBookInfo.memo = memoTextView.text
                 realm.add(realmBookInfo)
             }
         }
