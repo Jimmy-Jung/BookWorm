@@ -19,12 +19,15 @@ final class BookCollectionViewController: UICollectionViewController {
     private var cellSize: CGFloat = 0
     private var page: Int = 1
     
+    private let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         configCollectionView()
         setupSearchController()
         Task { await fetchBookList() }
+        print(realm.configuration.fileURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,18 +131,27 @@ final class BookCollectionViewController: UICollectionViewController {
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
         let bookInfo = bookList[sender.tag]
+        let cell = collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! BookCollectionViewCell
+        guard let image = cell.coverImageView.image else { return }
         let task = bookInfo.convertToRealm()
-        let realm = RealmManager.createRealm(path: .favoritesBookList)
         let realmBookInfo = realm.objects(RealmBookInfo.self)
-        let isStored = realmBookInfo.where { query in
-            query.title == bookInfo.title && query.author == bookInfo.author
-        }.count != 0
-        
-        if isStored {
+        let storedBookInfo = realmBookInfo.where { query in
+            query.itemId == bookInfo.itemId
+        }.first
+        // realm에 데이터가 있고, 저장 버튼 눌린경우 realm에서 제거
+        if let storedBookInfo, storedBookInfo.favorite == true  {
+            // 사진 제거
+            removeImageFromDocument(fileName: fileName_BookWorm)
+            // realm에서 제거
             try! realm.write {
                 realm.delete(realmBookInfo)
             }
+            // realm에 데이터 없거나, 저장 버튼 안 눌린경우 realm에 추가
         } else {
+            // 사진 저장
+            saveImageToDocument(fileName: fileName_BookWorm, image: image)
+            task.favorite = true
+            // realm에 저장
             try! realm.write {
                 realm.add(task)
             }
@@ -197,7 +209,7 @@ extension BookCollectionViewController: UISearchResultsUpdating {
         let vc = searchController.searchResultsController as! SearchTableViewController
         // 컬렉션뷰에 찾으려는 단어 전달
         guard let text = searchController.searchBar.text,
-                !text.isEmpty else {return}
+              !text.isEmpty else {return}
         vc.searchTerm = text
         vc.page = 1
     }

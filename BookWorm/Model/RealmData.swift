@@ -20,9 +20,12 @@ class RealmBookInfo: Object {
     @Persisted var categoryName: String?
     @Persisted var publisher: String?
     @Persisted var customerReviewRank: Int?
+    @Persisted var itemId: Int?
+    @Persisted var favorite: Bool?
+    @Persisted var visited: Bool?
     @Persisted var memo: String?
     
-    convenience init(title: String? = nil, link: String? = nil, author: String? = nil, description_: String? = nil, priceSales: Int? = nil, priceStandard: Int? = nil, cover: String? = nil, categoryName: String? = nil, publisher: String? = nil, customerReviewRank: Int? = nil, memo: String? = nil) {
+    convenience init(title: String? = nil, link: String? = nil, author: String? = nil, description_: String? = nil, priceSales: Int? = nil, priceStandard: Int? = nil, cover: String? = nil, categoryName: String? = nil, publisher: String? = nil, customerReviewRank: Int? = nil, itemId: Int? = nil, favorite: Bool? = nil, visited: Bool? = nil, memo: String? = nil) {
         self.init()
         self.title = title
         self.link = link
@@ -34,6 +37,9 @@ class RealmBookInfo: Object {
         self.categoryName = categoryName
         self.publisher = publisher
         self.customerReviewRank = customerReviewRank
+        self.itemId = itemId
+        self.favorite = favorite
+        self.visited = visited
         self.memo = memo
     }
 }

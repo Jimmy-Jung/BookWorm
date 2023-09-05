@@ -17,6 +17,7 @@ final class BookCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var storeButton: UIButton!
+    let realm = try! Realm()
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -56,14 +57,15 @@ final class BookCollectionViewCell: UICollectionViewCell {
     
     private func compareWithUserDefaults() {
         guard let bookInfo else { return }
-        let realm = RealmManager.createRealm(path: .favoritesBookList)
         let realmBookInfo = realm.objects(RealmBookInfo.self)
-        let isStored = realmBookInfo.where { query in
-            query.title == bookInfo.title && query.author == bookInfo.author
-        }.count != 0
-        let image = isStored ?
-        UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-        storeButton.setImage(image, for: .normal)
+        let storedBookInfo = realmBookInfo.where { query in
+            query.itemId == bookInfo.itemId
+        }.first
+        if let storedBookInfo, storedBookInfo.favorite == true {
+            storeButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            storeButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
     }
     
     private func configImage() {
