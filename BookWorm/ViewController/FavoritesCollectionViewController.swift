@@ -26,7 +26,9 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
     private func getBookList() {
-        bookList = realm.objects(RealmBookInfo.self).sorted(byKeyPath: "title", ascending: true)
+        bookList = realm.objects(RealmBookInfo.self).where({
+            $0.favorite == true
+        }).sorted(byKeyPath: "title", ascending: true)
         
     }
     

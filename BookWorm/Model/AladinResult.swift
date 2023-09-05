@@ -64,7 +64,7 @@ extension BookInfo {
         title = realm.title
         link = realm.link
         author = realm.author
-        description = realm.description
+        description = realm.description_
         priceSales = realm.priceSales
         priceStandard = realm.priceStandard
         cover = realm.cover

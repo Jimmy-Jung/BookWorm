@@ -84,6 +84,7 @@ final class BrowseViewController: UIViewController {
         browseCollectionView.dataSource = self
         collectionViewHeaderTitleLabel.text = visitedBookListHeaderTitle
     }
+    
     private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -142,6 +143,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         ) as! DetailViewController
         guard let visitedBookList else { return }
         vc.bookInfo = BookInfo.init(from: visitedBookList[indexPath.item])
+  
         navigationController?.pushViewController(vc, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
