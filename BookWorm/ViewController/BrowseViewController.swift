@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class BrowseViewController: UIViewController {
     // MARK: - IBOutlet
@@ -16,12 +17,12 @@ final class BrowseViewController: UIViewController {
     @IBOutlet weak var browseTableView: UITableView!
     
     // MARK: - Private Properties
-    private var visitedBookList: [BookInfo] = []
+    private var visitedBookList: Results<RealmBookInfo>?
     private var noteworthyBookList: [BookInfo] = []
     private let networkManager = AladinAPIService.shared
     private let visitedBookListHeaderTitle = "최근 본 작품"
     private let noteworthyBookListHeaderTitle = "주목할 만한 신간"
-    
+    let realm = try! Realm()
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -35,18 +36,19 @@ final class BrowseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        visitedBookList = BookDefaultManager.visitedBookList
+//        visitedBookList = BookDefaultManager.visitedBookList
         browseCollectionView.reloadData()
     }
     
     // MARK: - Private Methods
     private func fetchVisitedBookList() {
-        visitedBookList = BookDefaultManager.visitedBookList
-        if visitedBookList.count == 0 {
-            browseTableView.tableHeaderView?.frame.size.height = 0
-            browseTableView.reloadData()
+        visitedBookList = realm.objects(RealmBookInfo.self).where {
+            $0.visited == true
         }
-        browseCollectionView.reloadData()
+        if visitedBookList?.count == 0 {
+            browseTableView.tableHeaderView?.frame.size.height = 0
+        }
+        browseTableView.reloadData()
     }
     
     private func fetchNoteworthyBookList() async {
@@ -114,7 +116,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return visitedBookList.count
+        return visitedBookList?.count ?? 0
     }
     
     func collectionView(
@@ -125,7 +127,8 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
             withReuseIdentifier: BrowseCollectionViewCell.identifier,
             for: indexPath
         ) as! BrowseCollectionViewCell
-        cell.bookInfo = visitedBookList[indexPath.item]
+        guard let visitedBookList else { return cell }
+        cell.bookInfo = BookInfo.init(from: visitedBookList[indexPath.item])
         return cell
     }
     
@@ -137,7 +140,8 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let vc = sb.instantiateViewController(
             withIdentifier: DetailViewController.StoryBoardIdentifier
         ) as! DetailViewController
-        vc.bookInfo = visitedBookList[indexPath.item]
+        guard let visitedBookList else { return }
+        vc.bookInfo = BookInfo.init(from: visitedBookList[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }

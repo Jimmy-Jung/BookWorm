@@ -134,18 +134,32 @@ final class BookCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! BookCollectionViewCell
         guard let image = cell.coverImageView.image else { return }
         let task = bookInfo.convertToRealm()
-        let realmBookInfo = realm.objects(RealmBookInfo.self)
-        let storedBookInfo = realmBookInfo.where { query in
+        let realmBookList = realm.objects(RealmBookInfo.self)
+        let storedBookInfo = realmBookList.where { query in
             query.itemId == bookInfo.itemId
         }.first
         // realm에 데이터가 있고, 저장 버튼 눌린경우 realm에서 제거
-        if let storedBookInfo, storedBookInfo.favorite == true  {
-            // 사진 제거
-            removeImageFromDocument(fileName: fileName_BookWorm)
-            // realm에서 제거
-            try! realm.write {
-                realm.delete(realmBookInfo)
+        
+        
+        if let storedBookInfo {
+            switch (storedBookInfo.favorite, storedBookInfo.visited) {
+            case (true, true):
+                try! realm.write {
+                    storedBookInfo.favorite = false
+                }
+            case (true, _):
+                // 사진 제거
+                removeImageFromDocument(fileName: fileName_BookWorm)
+                // realm에서 제거
+                try! realm.write {
+                    realm.delete(storedBookInfo)
+                }
+            case (_, _):
+                try! realm.write {
+                    storedBookInfo.favorite = true
+                }
             }
+
             // realm에 데이터 없거나, 저장 버튼 안 눌린경우 realm에 추가
         } else {
             // 사진 저장

@@ -7,13 +7,14 @@
 
 import UIKit
 import SafariServices
+import RealmSwift
 
 enum PresentType {
     case full
     case nav
 }
 protocol Present {
-    func makeCloseButton()
+    func makeBarButton()
 }
 
 final class DetailViewController: UIViewController, Present {
@@ -31,38 +32,27 @@ final class DetailViewController: UIViewController, Present {
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var memoTextView: UITextView!
     var bookInfo: BookInfo!
+    lazy var realmBookInfo: RealmBookInfo? = {
+        let realmBookList = realm.objects(RealmBookInfo.self)
+        return realmBookList.where {
+            $0.itemId == bookInfo.itemId
+        }.first
+    }()
     var type: PresentType?
     let placeholderText = "텍스트를 입력하세요."
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "상세 설명"
-        fetchMemo()
         configContent()
-        makeCloseButton()
+        makeBarButton()
         configDescription()
         keyboardNotification()
         visitCheck()
         memoTextView.delegate = self
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if !memoTextView.text.isEmpty {
-            bookInfo.memo = memoTextView.text
-            BookDefaultManager.memoBookList.insert(bookInfo)
-        }
-    }
-    private func fetchMemo() {
-        BookDefaultManager.memoBookList.forEach { book in
-            if book == bookInfo {
-                bookInfo.memo = book.memo
-            }
-        }
-    }
+
     @IBAction func moreButtonTapped(_ sender: UIButton) {
         if descriptionLabel.countCurrentLines() > 5 {
             descriptionLabel.numberOfLines = 8
@@ -84,12 +74,23 @@ final class DetailViewController: UIViewController, Present {
             present(safariVC, animated: true)
         }
     }
+    
+    /// 방문 체크 및 체크인
     private func visitCheck() {
-        if !BookDefaultManager.visitedBookList.contains(bookInfo) {
-            BookDefaultManager.visitedBookList.insert(bookInfo, at: 0)
+        if let realmBookInfo {
+                try! realm.write {
+                    realmBookInfo.visited = true
+                }
+            
+        } else {
+            let realmBookInfo = bookInfo.convertToRealm()
+            try! realm.write {
+                realmBookInfo.visited = true
+                realm.add(realmBookInfo)
+            }
         }
-        
     }
+    
     private func configDescription() {
         descriptionLabel.numberOfLines = 5
         if descriptionLabel.countCurrentLines() <= 5 {
@@ -97,21 +98,33 @@ final class DetailViewController: UIViewController, Present {
         }
         
     }
-    func makeCloseButton() {
+    func makeBarButton() {
         switch type {
         case .full:
             let xmark = UIImage(systemName: "xmark")
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain, target: self, action: #selector(closeButtonTapped))
             navigationItem.leftBarButtonItem?.tintColor = .black
+            
         case .nav:
             break
         case .none:
             break
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
     }
     @objc func closeButtonTapped() {
         dismiss(animated: true)
     }
+    
+    @objc func saveButtonTapped() {
+        guard let realmBookInfo else { return }
+        try! realm.write {
+            realmBookInfo.memo = memoTextView.text
+        }
+        navigationController?.popViewController(animated: true)
+        print("pop")
+    }
+    
     private func configContent() {
         let category = bookInfo.categoryName ?? "카테고리"
         let title = bookInfo.title ?? "책 이름"
@@ -120,7 +133,7 @@ final class DetailViewController: UIViewController, Present {
         let priceSD = bookInfo.priceStandard ?? 0
         let priceSL = bookInfo.priceSales ?? 0
         let description = bookInfo.description?.count == 0 ? "설명 없음" : (bookInfo.description ?? "설명")
-        let memo = bookInfo.memo ?? placeholderText
+        let memo = realmBookInfo?.memo ?? placeholderText
         categoryNameLabel.text = category
         titleLabel.text = title
         authorLabel.text = autor

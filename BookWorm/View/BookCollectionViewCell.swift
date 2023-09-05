@@ -63,8 +63,10 @@ final class BookCollectionViewCell: UICollectionViewCell {
         }.first
         if let storedBookInfo, storedBookInfo.favorite == true {
             storeButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            storeButton.tintColor = .systemYellow
         } else {
             storeButton.setImage(UIImage(systemName: "star"), for: .normal)
+            storeButton.tintColor = .secondaryLabel
         }
     }
     

@@ -31,8 +31,8 @@ struct BookInfo: Codable, Hashable {
     let customerReviewRank: Int?
     let itemId: Int?
     var backgroundColor: RGB?
-    var favorite: Bool?
-    var visited: Bool?
+    var favorite: Bool? = false
+    var visited: Bool? = false
     var memo: String?
     
     static func == (lhs: Self, rhs: Self) -> Bool {
