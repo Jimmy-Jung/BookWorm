@@ -9,8 +9,6 @@ import UIKit
 import RealmSwift
 
 final class BookCollectionViewController: UICollectionViewController {
-    static let storyBoardIdentifier = "BookCollectionViewController"
-    private let cellIdentifier = BookCollectionViewCell.identifier
     private let navTitle = "책 검색(Prefetch)"
     private let sectionHeaderTitle = "베스트 셀러(ScrollView Offset)"
     
@@ -83,26 +81,12 @@ final class BookCollectionViewController: UICollectionViewController {
     }
     
     private func setupCollectionView() {
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: BookCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
     }
     
     private func configCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        let spacing:CGFloat = 8
-        let width = UIScreen.main.bounds.width - (spacing * 3)
-        cellSize = width/2
-        layout.itemSize = CGSize(width: width/2, height: width/2)
-        layout.sectionInset = UIEdgeInsets(
-            top: spacing,
-            left: spacing,
-            bottom: spacing,
-            right: spacing
-        )
-        collectionView.collectionViewLayout = layout
-        layout.minimumInteritemSpacing = spacing
-        layout.minimumLineSpacing = spacing
-        layout.scrollDirection = .vertical
+        let layout = UICollectionViewFlowLayout(numberOfRows: 2, itemRatio: 1, spacing: 8, inset: .init(top: 10, left: 10, bottom: 10, right: 10), scrollDirection: .vertical)
         collectionView.collectionViewLayout = layout
     }
     
@@ -119,7 +103,7 @@ final class BookCollectionViewController: UICollectionViewController {
     ) -> UICollectionViewCell {
         let cell = collectionView
             .dequeueReusableCell(
-                withReuseIdentifier: cellIdentifier, for: indexPath
+                withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath
             ) as! BookCollectionViewCell
         cell.bookInfo = bookList[indexPath.item]
         cell.size = cellSize
@@ -147,14 +131,14 @@ final class BookCollectionViewController: UICollectionViewController {
                 try! realm.write {
                     storedBookInfo.favorite = false
                 }
-            case (true, _):
+            case (true, false):
                 // 사진 제거
                 removeImageFromDocument(fileName: fileName_BookWorm)
                 // realm에서 제거
                 try! realm.write {
                     realm.delete(storedBookInfo)
                 }
-            case (_, _):
+            case (false, _):
                 try! realm.write {
                     storedBookInfo.favorite = true
                 }
@@ -206,15 +190,6 @@ final class BookCollectionViewController: UICollectionViewController {
     }
 }
 
-extension BookCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        referenceSizeForHeaderInSection section: Int)
-    -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
-    }
-}
 
 extension BookCollectionViewController: UISearchResultsUpdating {
     // 유저가 글자를 입력하는 순간마다 호출되는 메서드 ===> 일반적으로 다른 화면을 보여줄때 구현

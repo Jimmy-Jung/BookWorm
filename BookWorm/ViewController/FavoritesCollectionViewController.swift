@@ -38,22 +38,7 @@ final class FavoritesCollectionViewController: UICollectionViewController {
     }
     
     private func configCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        let spacing:CGFloat = 8
-        // 이게 아이폰에서 디바이스 넓이를 가지고올수있는 코드
-        let width = UIScreen.main.bounds.width - (spacing * 3)
-        cellSize = width/2
-        layout.itemSize = CGSize(width: width/2, height: width/2)
-        layout.sectionInset = UIEdgeInsets(
-            top: spacing,
-            left: spacing,
-            bottom: spacing,
-            right: spacing
-        )
-        collectionView.collectionViewLayout = layout
-        layout.minimumInteritemSpacing = spacing
-        layout.minimumLineSpacing = spacing
-        layout.scrollDirection = .vertical
+        let layout = UICollectionViewFlowLayout(numberOfRows: 2, itemRatio: 1, spacing: 10, inset: .init(top: 10, left: 10, bottom: 10, right: 10), scrollDirection: .vertical)
         collectionView.collectionViewLayout = layout
     }
     
