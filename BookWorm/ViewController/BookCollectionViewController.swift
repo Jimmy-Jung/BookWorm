@@ -35,7 +35,7 @@ final class BookCollectionViewController: UICollectionViewController {
     
     private func setupSearchController() {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: SearchTableViewController.StoryBoardIdentifier) as! SearchTableViewController
+        let vc = sb.instantiateViewController(withIdentifier: SearchTableViewController.identifier) as! SearchTableViewController
         let searchVC = UISearchController(searchResultsController: vc)
         let searchController = searchVC
         // 🍎 2) 서치(결과)컨트롤러의 사용 (복잡한 구현 가능)
@@ -115,6 +115,7 @@ final class BookCollectionViewController: UICollectionViewController {
     
     @objc private func storeButtonTapped(_ sender: UIButton) {
         let bookInfo = bookList[sender.tag]
+        let itemId = bookInfo.itemId
         let cell = collectionView.cellForItem(at: IndexPath(item: sender.tag, section: 0)) as! BookCollectionViewCell
         guard let image = cell.coverImageView.image else { return }
         let task = bookInfo.convertToRealm()
@@ -133,7 +134,7 @@ final class BookCollectionViewController: UICollectionViewController {
                 }
             case (true, false):
                 // 사진 제거
-                removeImageFromDocument(fileName: fileName_BookWorm)
+                removeImageFromDocument(fileName: imagePath(itemId: itemId))
                 // realm에서 제거
                 try! realm.write {
                     realm.delete(storedBookInfo)
@@ -147,7 +148,7 @@ final class BookCollectionViewController: UICollectionViewController {
             // realm에 데이터 없거나, 저장 버튼 안 눌린경우 realm에 추가
         } else {
             // 사진 저장
-            saveImageToDocument(fileName: fileName_BookWorm, image: image)
+            saveImageToDocument(fileName: imagePath(itemId: itemId), image: image)
             task.favorite = true
             // realm에 저장
             try! realm.write {
@@ -163,7 +164,7 @@ final class BookCollectionViewController: UICollectionViewController {
     ) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
-            withIdentifier: DetailViewController.StoryBoardIdentifier
+            withIdentifier: DetailViewController.identifier
         ) as! DetailViewController
         vc.bookInfo = bookList[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)

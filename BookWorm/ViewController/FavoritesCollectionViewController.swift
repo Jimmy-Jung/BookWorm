@@ -9,8 +9,6 @@ import UIKit
 import RealmSwift
 
 final class FavoritesCollectionViewController: UICollectionViewController {
-    static let storyBoardIdentifier = "FavoritesCollectionViewController"
-    private let cellIdentifier = BookCollectionViewCell.identifier
     private var bookList: Results<RealmBookInfo>!
     private var cellSize: CGFloat = 0
     let realm = try! Realm()
@@ -33,8 +31,8 @@ final class FavoritesCollectionViewController: UICollectionViewController {
     }
     
     private func setupCollectionView() {
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: BookCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
     }
     
     private func configCollectionView() {
@@ -54,7 +52,7 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellIdentifier, for: indexPath
+            withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath
         ) as! BookCollectionViewCell
         cell.bookInfo = BookInfo.init(from: bookList[indexPath.item])
         cell.size = cellSize
@@ -74,7 +72,7 @@ final class FavoritesCollectionViewController: UICollectionViewController {
         collectionView.deselectItem(at: indexPath, animated: true)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
-            withIdentifier: DetailViewController.StoryBoardIdentifier
+            withIdentifier: DetailViewController.identifier
         ) as! DetailViewController
         vc.bookInfo = BookInfo.init(from: bookList[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
