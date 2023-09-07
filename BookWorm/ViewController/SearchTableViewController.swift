@@ -10,7 +10,6 @@ import SafariServices
 
 final class SearchTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
-    static let StoryBoardIdentifier = "SearchTableViewController"
     private var bookList: [BookInfo] = []
     private let networkManager = AladinAPIService.shared
     
@@ -88,7 +87,7 @@ final class SearchTableViewController: UITableViewController, UITableViewDataSou
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
-            withIdentifier: DetailViewController.StoryBoardIdentifier
+            withIdentifier: DetailViewController.identifier
         ) as! DetailViewController
         vc.bookInfo = bookList[indexPath.item]
         vc.type = .full

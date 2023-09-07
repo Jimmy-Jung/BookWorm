@@ -91,8 +91,8 @@ extension BookInfo {
             publisher: publisher,
             customerReviewRank: customerReviewRank,
             itemId: itemId,
-            favorite: favorite,
-            visited: visited,
+            favorite: favorite ?? false,
+            visited: visited ?? false,
             memo: memo
         )
     }

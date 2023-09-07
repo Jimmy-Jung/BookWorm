@@ -139,7 +139,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
     ) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
-            withIdentifier: DetailViewController.StoryBoardIdentifier
+            withIdentifier: DetailViewController.identifier
         ) as! DetailViewController
         guard let visitedBookList else { return }
         vc.bookInfo = BookInfo.init(from: visitedBookList[indexPath.item])
@@ -169,7 +169,7 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(
-            withIdentifier: DetailViewController.StoryBoardIdentifier
+            withIdentifier: DetailViewController.identifier
         ) as! DetailViewController
         vc.bookInfo = noteworthyBookList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)

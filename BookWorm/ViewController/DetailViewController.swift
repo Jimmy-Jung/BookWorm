@@ -18,7 +18,6 @@ protocol Present {
 }
 
 final class DetailViewController: UIViewController, Present {
-    static let StoryBoardIdentifier = "DetailViewController"
     
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!

@@ -8,8 +8,9 @@
 import UIKit
 
 extension UIViewController {
-    var fileName_BookWorm: String {
-        return "BookWorm"
+    func imagePath(itemId: Int?) -> String {
+        guard let itemId else { return "" }
+        return "\(itemId).jpg"
     }
     /// 도큐먼트 폴더에서 이미지를 가져오는 메서드
     func removeImageFromDocument(fileName: String) {
